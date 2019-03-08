@@ -21,17 +21,17 @@
 ## 1er proto
 
 - 1 page Web Seaside
--- 1 TextArea pour du code Pharo
--- afficher le résultat dans la page Web
+- 1 TextArea pour du code Pharo
+- afficher le résultat dans la page Web
 
 ## n-ième proto
 
 - exec dans Docker 
--- https://github.com/pharo-project/pharo-docker
--- https://hub.docker.com/r/pharo/image
+- https://github.com/pharo-project/pharo-docker
+- https://hub.docker.com/r/pharo/image
 - résultats dans la page Web
--- stdout / stderr
--- fichiers
--- Websokets
+- stdout / stderr
+- fichiers
+- Websokets
 
 
