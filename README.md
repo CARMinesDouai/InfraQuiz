@@ -5,7 +5,19 @@
 ## Pharo 
 
 - Pharo 7 - 64bits
-- Seaside
+- Seaside : https://github.com/seasidest/seaside
+
+# Seaside
+Installer Seaside :
+
+```Smalltalk
+Metacello new
+ baseline:'Seaside3';
+ repository: 'github://SeasideSt/Seaside:master/repository';
+ load
+```
+
+
 
 ## Solutions Similaires 
 
