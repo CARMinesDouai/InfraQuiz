@@ -1,6 +1,6 @@
 # InfraQuiz
 
-## Install
+# Install
 
 ## Pharo 
 
@@ -9,9 +9,9 @@
 
 ## Seaside
 
-### Début d'application
+### Installation
 
-Installer Seaside :
+- Installer Seaside :
 
 ```Smalltalk
 Metacello new
@@ -19,8 +19,10 @@ Metacello new
     repository: 'github://SeasideSt/Seaside:master/repository';
     load
 ```
+- Installer Bootstrap depuis le Catalog Browser
 
-Créer une application :
+### Créer une application
+
 - Faire hériter une classe de WAComponent
 - Créer une méthode de classe initialize dans le protocole initialization :
 
@@ -31,6 +33,7 @@ initialize
     app := WAAdmin register: self asApplicationAt: 'InfraQuiz'.
     app addLibrary: JQDeploymentLibrary.
     app addLibrary: JQUiDeploymentLibrary.
+    app addLibrary: TBSDeploymentLibrary.
 ```
 - Pour que l'on est une application et pas seulement un composant, on ajoute cette méthode de classe :
 
@@ -54,6 +57,8 @@ updateRoot: anHtmlRoot
 	anHtmlRoot beHtml5.
 	anHtmlRoot title: 'InfraQuiz'.
 ```
+
+### Remplissage
 
 ## Solutions Similaires 
 
