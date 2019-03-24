@@ -79,7 +79,21 @@ updateRoot: anHtmlRoot
 	anHtmlRoot title: 'InfraQuiz'.
 ```
 
-### Remplissage
+### Remplissage Proto 1
+
+- Mettre un formulaire :
+
+```Smalltalk
+renderContentOn: html
+	html form: [
+		html text: 'Entrez du code Pharo'.
+		html textInput
+			callback: [ :value | self texte: value ];
+			value: self texte.
+		html break.
+      html submitButton.
+	].
+```
 
 ## Solutions Similaires 
 
