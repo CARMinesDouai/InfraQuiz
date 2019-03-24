@@ -23,14 +23,35 @@ Metacello new
 
 ### Créer une application
 
-- Faire hériter une classe de WAComponent
+- Faire hériter une classe InfraQuiz de WAComponent :
+
+```Smalltalk
+WAComponent subclass: #InfraQuiz
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'InfraQuiz'
+```
+
+- Dans le protocole accessing, on ajoute une méthode de classe pour nommer notre application :
+
+```Smalltalk
+handlerName
+	^'InfraQuiz'
+```
+- Dans le protocole accessing, on ajoute une méthode de classe pour décrire notre application :
+
+```Smalltalk
+description
+	^'Un site de quiz pour apprendre à programmer'.
+```
+
 - Créer une méthode de classe initialize dans le protocole initialization :
 
 ```Smalltalk
 initialize
     "self initialize"
     | app |
-    app := WAAdmin register: self asApplicationAt: 'InfraQuiz'.
+    app := WAAdmin register: self asApplicationAt: self handlerName.
     app addLibrary: JQDeploymentLibrary.
     app addLibrary: JQUiDeploymentLibrary.
     app addLibrary: TBSDeploymentLibrary.
