@@ -21,86 +21,20 @@ Metacello new
 ```
 - Installer Bootstrap depuis le Catalog Browser
 
-### Créer une application
+## Application
 
-- Faire hériter une classe InfraQuiz de WAComponent puis générer ses accessurs :
+### Installation
 
-```Smalltalk
-WAComponent subclass: #InfraQuiz
-	instanceVariableNames: 'texte resultat'
-	classVariableNames: ''
-	package: 'InfraQuiz'
-```
+- Importer le fichier InfraQuiz.st dans votre image Pharo. (Le code est commenté pour expliquer chaque fonction)
 
-- Dans le protocole accessing, on ajoute une méthode de classe pour nommer notre application :
+### Utilisation
 
-```Smalltalk
-handlerName
-	^'InfraQuiz'
-```
-- Dans le protocole accessing, on ajoute une méthode de classe pour décrire notre application :
-
-```Smalltalk
-description
-	^'Un site de quiz pour apprendre à programmer'.
-```
-
-- Créer une méthode de classe initialize dans le protocole initialization :
-
-```Smalltalk
-initialize
-    "self initialize"
-    | app |
-    app := WAAdmin register: self asApplicationAt: self handlerName.
-    app addLibrary: JQDeploymentLibrary.
-    app addLibrary: JQUiDeploymentLibrary.
-    app addLibrary: TBSDeploymentLibrary.
-```
-- Pour que l'on est une application et pas seulement un composant, on ajoute cette méthode de classe :
-
-```Smalltalk
-canBeRoot
-	^true.
-```
-
-- Ajouter du contenu avec cette méthode d'instance :
-
-```Smalltalk
-renderContentOn: html
-	html text: 'InfraQuiz'.
-```
-
-- Création de la partie head de la page avec cette méthode d'instance :
-
-```Smalltalk
-updateRoot: anHtmlRoot
-	super updateRoot: anHtmlRoot.
-	anHtmlRoot beHtml5.
-	anHtmlRoot title: 'InfraQuiz'.
-```
-
-### Remplissage Proto 1
-
-- Mettre un formulaire :
-
-```Smalltalk
-renderContentOn: html
-	html form: [
-		html text: 'Entrez du code Pharo'.
-		html break.
-		html textInput
-			callback: [ :value | 
-				self texte: value.
-				self resultat: (AbstractCompiler evaluate: value). "Permet d'exécuter le code tapé"
-				];
-			value: self texte.
-		html break.
-      html submitButton.
-	].
-	html text: self texte.
-	html break.
-	html text: self resultat. "Affiche le résultat de l'exécution"
-```
+- Vous pouvez saisir une ou plusieurs instructions Pharo dans le formulaire.
+- Pour exécuter votre saisie, il suffit de cliquer sur le bouton Valider.
+- La page affiche l'ensemble de vos saisies passées ainsi que le dernier résultat de vos saisies.
+- Le résultat correspond à un printIt.
+- Si une erreur a lieu, elle sera affichée dans la partie Résultat.
+- Vous pouvez réinitialiser vos saisies en cliquant sur Reset.
 
 ## Solutions Similaires 
 
