@@ -23,11 +23,11 @@ Metacello new
 
 ### Créer une application
 
-- Faire hériter une classe InfraQuiz de WAComponent :
+- Faire hériter une classe InfraQuiz de WAComponent puis générer ses accessurs :
 
 ```Smalltalk
 WAComponent subclass: #InfraQuiz
-	instanceVariableNames: ''
+	instanceVariableNames: 'texte resultat'
 	classVariableNames: ''
 	package: 'InfraQuiz'
 ```
@@ -87,12 +87,19 @@ updateRoot: anHtmlRoot
 renderContentOn: html
 	html form: [
 		html text: 'Entrez du code Pharo'.
+		html break.
 		html textInput
-			callback: [ :value | self texte: value ];
+			callback: [ :value | 
+				self texte: value.
+				self resultat: (AbstractCompiler evaluate: value). "Permet d'exécuter le code tapé"
+				];
 			value: self texte.
 		html break.
       html submitButton.
 	].
+	html text: self texte.
+	html break.
+	html text: self resultat. "Affiche le résultat de l'exécution"
 ```
 
 ## Solutions Similaires 
