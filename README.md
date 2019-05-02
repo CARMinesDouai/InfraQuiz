@@ -7,7 +7,7 @@
 - Pharo 7 - 64bits
 - Seaside : https://github.com/seasidest/seaside
 
-## Seaside
+## Pré-Requis
 
 ### Installation
 
@@ -20,6 +20,15 @@ Metacello new
     load
 ```
 - Installer Bootstrap depuis le Catalog Browser
+
+- Installer OSProcess (Ce paquet permet d'interagir avec le système où est exécuté le serveur):
+
+```Smalltalk
+Gofer new
+	squeaksource: 'OSProcess';
+	package: 'OSProcess';
+	load.
+```
 
 ## Application
 
