@@ -53,6 +53,7 @@ Gofer new
 ## Solutions techniques à regarder 
 
 - Docker
+- Utile pour dev : https://fuhrmanator.github.io/2019/02/27/Pharo-in-WSL.html
 
 # Votre projet
 
@@ -67,6 +68,8 @@ Gofer new
 - exec dans Docker 
 - https://github.com/pharo-project/pharo-docker
 - https://hub.docker.com/r/pharo/image
+- http://wiki.astares.com/pharo/613
+- https://www.samadhiweb.com/blog/2018.09.09.docker.html
 - résultats dans la page Web
 - stdout / stderr
 - fichiers
