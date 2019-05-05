@@ -35,6 +35,11 @@ Gofer new
 ### Installation
 
 - Importer le fichier InfraQuiz.st dans votre image Pharo. (Le code est commenté pour expliquer chaque fonction)
+- Dans le playground, saisir :
+
+```Smalltalk
+Infraquiz initialize.
+```
 
 ### Utilisation
 
