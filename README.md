@@ -7,7 +7,7 @@
 - Pharo 7 - 64bits
 - Seaside : https://github.com/seasidest/seaside
 
-## Seaside
+## Pré-Requis
 
 ### Installation
 
@@ -21,79 +21,29 @@ Metacello new
 ```
 - Installer Bootstrap depuis le Catalog Browser
 
-### Créer une application
-
-- Faire hériter une classe InfraQuiz de WAComponent :
+- Installer OSProcess (Ce paquet permet d'interagir avec le système où est exécuté le serveur):
 
 ```Smalltalk
-WAComponent subclass: #InfraQuiz
-	instanceVariableNames: ''
-	classVariableNames: ''
-	package: 'InfraQuiz'
+Gofer new
+	squeaksource: 'OSProcess';
+	package: 'OSProcess';
+	load.
 ```
 
-- Dans le protocole accessing, on ajoute une méthode de classe pour nommer notre application :
+## Application
 
-```Smalltalk
-handlerName
-	^'InfraQuiz'
-```
-- Dans le protocole accessing, on ajoute une méthode de classe pour décrire notre application :
+### Installation
 
-```Smalltalk
-description
-	^'Un site de quiz pour apprendre à programmer'.
-```
+- Importer le fichier InfraQuiz.st dans votre image Pharo. (Le code est commenté pour expliquer chaque fonction)
 
-- Créer une méthode de classe initialize dans le protocole initialization :
+### Utilisation
 
-```Smalltalk
-initialize
-    "self initialize"
-    | app |
-    app := WAAdmin register: self asApplicationAt: self handlerName.
-    app addLibrary: JQDeploymentLibrary.
-    app addLibrary: JQUiDeploymentLibrary.
-    app addLibrary: TBSDeploymentLibrary.
-```
-- Pour que l'on est une application et pas seulement un composant, on ajoute cette méthode de classe :
-
-```Smalltalk
-canBeRoot
-	^true.
-```
-
-- Ajouter du contenu avec cette méthode d'instance :
-
-```Smalltalk
-renderContentOn: html
-	html text: 'InfraQuiz'.
-```
-
-- Création de la partie head de la page avec cette méthode d'instance :
-
-```Smalltalk
-updateRoot: anHtmlRoot
-	super updateRoot: anHtmlRoot.
-	anHtmlRoot beHtml5.
-	anHtmlRoot title: 'InfraQuiz'.
-```
-
-### Remplissage Proto 1
-
-- Mettre un formulaire :
-
-```Smalltalk
-renderContentOn: html
-	html form: [
-		html text: 'Entrez du code Pharo'.
-		html textInput
-			callback: [ :value | self texte: value ];
-			value: self texte.
-		html break.
-      html submitButton.
-	].
-```
+- Vous pouvez saisir une ou plusieurs instructions Pharo dans le formulaire.
+- Pour exécuter votre saisie, il suffit de cliquer sur le bouton Valider.
+- La page affiche l'ensemble de vos saisies passées ainsi que le dernier résultat de vos saisies.
+- Le résultat correspond à un printIt.
+- Si une erreur a lieu, elle sera affichée dans la partie Résultat.
+- Vous pouvez réinitialiser vos saisies en cliquant sur Reset.
 
 ## Solutions Similaires 
 
@@ -103,6 +53,7 @@ renderContentOn: html
 ## Solutions techniques à regarder 
 
 - Docker
+- Utile pour dev : https://fuhrmanator.github.io/2019/02/27/Pharo-in-WSL.html
 
 # Votre projet
 
@@ -117,6 +68,8 @@ renderContentOn: html
 - exec dans Docker 
 - https://github.com/pharo-project/pharo-docker
 - https://hub.docker.com/r/pharo/image
+- http://wiki.astares.com/pharo/613
+- https://www.samadhiweb.com/blog/2018.09.09.docker.html
 - résultats dans la page Web
 - stdout / stderr
 - fichiers
