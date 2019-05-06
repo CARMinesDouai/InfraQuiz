@@ -25,12 +25,12 @@ The code is in: [src/InfraQuiz.st](src/InfraQuiz.st)
 
 ## Usage
 
-- Vous pouvez saisir une ou plusieurs instructions Pharo dans le formulaire.
-- Pour exécuter votre saisie, il suffit de cliquer sur le bouton Valider.
-- La page affiche l'ensemble de vos saisies passées ainsi que le dernier résultat de vos saisies.
-- Le résultat correspond à un printIt.
-- Si une erreur a lieu, elle sera affichée dans la partie Résultat.
-- Vous pouvez réinitialiser vos saisies en cliquant sur Reset.
+- You can enter one or more instructions.
+- To execute your entry, simply click on the Validate button.
+- The page display of the global of your foreclosures.
+- The result is a printIt.
+- If an error has been made, it will be displayed in the result.
+- You can reset your entries by clicking Reset.
 
 ## Solutions Similaires 
 
