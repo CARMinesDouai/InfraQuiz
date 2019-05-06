@@ -1,55 +1,29 @@
 # InfraQuiz
 
-# Install
+# Installation
 
-## Pharo 
-
-- Pharo 7 - 64bits
-- Seaside : https://github.com/seasidest/seaside
-
-## Pré-Requis
-
-### Installation
-
-####Automatiquement
+## Automatic
 
 ```bash
 ./createPharoImage.sh
 ```
 
-####Manuellement
+## Manual
 
-- Installer Seaside :
+- Install Pharo 7 64bits
+- Install Seaside: https://github.com/seasidest/seaside
+- Install Bootstrap for Seaside: https://github.com/astares/Seaside-Bootstrap 
+- Install OSProcess (bridge to command line):
 
-```Smalltalk
-Metacello new
-    baseline:'Seaside3';
-    repository: 'github://SeasideSt/Seaside:master/repository';
-    load
-```
-- Installer Bootstrap depuis le Catalog Browser
+More details in: [src/install.st](src/install.st)
 
-- Installer OSProcess (Ce paquet permet d'interagir avec le système où est exécuté le serveur):
+## InfraQuiz code
 
-```Smalltalk
-Gofer new
-	squeaksource: 'OSProcess';
-	package: 'OSProcess';
-	load.
-```
+The code is in: [src/InfraQuiz.st](src/InfraQuiz.st)
 
-## Application
+# OLD STUFF that must be UPDATED
 
-### Installation
-
-- Importer le fichier InfraQuiz.st dans votre image Pharo. (Le code est commenté pour expliquer chaque fonction)
-- Dans le playground, saisir :
-
-```Smalltalk
-Infraquiz initialize.
-```
-
-### Utilisation
+## Usage
 
 - Vous pouvez saisir une ou plusieurs instructions Pharo dans le formulaire.
 - Pour exécuter votre saisie, il suffit de cliquer sur le bouton Valider.
