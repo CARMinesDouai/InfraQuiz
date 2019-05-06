@@ -7,3 +7,4 @@ pharo-vm
 pharo-local
 PharoDebug.log
 out.txt
+in.st
