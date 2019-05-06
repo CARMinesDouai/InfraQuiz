@@ -11,6 +11,14 @@
 
 ### Installation
 
+####Automatiquement
+
+```bash
+./createPharoImage.sh
+```
+
+####Manuellement
+
 - Installer Seaside :
 
 ```Smalltalk
