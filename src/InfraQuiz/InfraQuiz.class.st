@@ -63,10 +63,10 @@ InfraQuiz >> children: anObject [
 ]
 
 { #category : #actions }
-InfraQuiz >> executeCode: code [
+InfraQuiz >> executeCode: code with: executor [
 	"Call the good Executor and store the code and the result"
 	self oldCode: code.
-	self result: (PharoExecutor executeMyCode: code).
+	self result: (executor executeMyCode: code).
 ]
 
 { #category : #testing }
@@ -102,7 +102,7 @@ html tbsContainer
 			html label for: 'inputCode'; with: 'Your Code:'.
 			html textArea 
 				style: 'width: 60%; height: 200px';
-				callback: [ :code | self executeCode: code ];
+				callback: [ :code | self executeCode: code with: PharoExecutor ];
 				tbsFormControl; 
 				id: 'exampleInputEmail1'; 
 				text: self oldCode.
