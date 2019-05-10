@@ -25,7 +25,7 @@ More details in: [src/BaselineOfInfraQuiz/BaselineOfInfraQuiz.class.st](src/Base
 
 ## InfraQuiz code
 
-The code is in: [src/InfraQuiz](src/InfraQuiz)
+The code is in: [src/InfraQuiz](src/InfraQuiz) and [src/InfraQuizExecutor](src/InfraQuizExecutor)
 
 # OLD STUFF that must be UPDATED
 
