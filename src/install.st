@@ -1,18 +1,17 @@
 
-"Loding Seaside - https://github.com/SeasideSt/Seaside"
-"Metacello new
- baseline:'Seaside3';
- repository: 'github://SeasideSt/Seaside:v3.3.3/repository';
- load."
+Metacello new baseline: 'InfraQuiz';
+   repository: 'gitlocal://./src';
+   load.
 	
-"Loading Bootstrap - that will Load Seaside too"
+	
+" OLD Loading script
 Metacello new
 	baseline:'Bootstrap';
    repository: 'github://astares/Seaside-Bootstrap:master/src';
 	load.
 
-"Installer OSProcess"
 Metacello new 
 	configuration: 'OSProcess'; 
 	repository: 'http://www.squeaksource.com/MetacelloRepository';
 	load.
+"

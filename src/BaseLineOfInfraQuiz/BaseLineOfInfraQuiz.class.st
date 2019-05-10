@@ -1,11 +1,11 @@
 Class {
-	#name : #BaseLineOfInfraQuiz,
+	#name : #BaselineOfInfraQuiz,
 	#superclass : #Object,
-	#category : #BaseLineOfInfraQuiz
+	#category : #BaselineOfInfraQuiz
 }
 
 { #category : #baselines }
-BaseLineOfInfraQuiz >> baseline: spec [
+BaselineOfInfraQuiz >> baseline: spec [
 	<baseline>
 	
 	spec for: #common do: [

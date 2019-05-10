@@ -1,1 +1,1 @@
-Package { #name : #BaseLineOfInfraQuiz }
+Package { #name : #BaselineOfInfraQuiz }
