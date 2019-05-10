@@ -1,6 +1,6 @@
 Class {
 	#name : #BaselineOfInfraQuiz,
-	#superclass : #Object,
+	#superclass : #BaselineOf,
 	#category : #BaselineOfInfraQuiz
 }
 
