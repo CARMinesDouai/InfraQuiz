@@ -62,11 +62,11 @@ InfraQuiz >> children: anObject [
 InfraQuiz >> executeCode: code [
 	|input|
 	self oldCode: code.
-	(PharoExecutor new:code) evalCode.
+	(PharoExecutor new: code) evalCode.
 	"input := 'in.st' asFileReference.
 	input writeStreamDo: [ :stream | stream nextPutAll: code ].
 	PharoExecutor executeFromFile."
-	self result: ('out.txt' asFileReference readStream upToEnd).
+	self result: 'out.txt' asFileReference readStream upToEnd.
 ]
 
 { #category : #testing }
