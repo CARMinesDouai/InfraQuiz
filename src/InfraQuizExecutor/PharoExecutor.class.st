@@ -4,7 +4,7 @@ Executor for Pharo codes
 Class {
 	#name : #PharoExecutor,
 	#superclass : #CodeExecutor,
-	#category : #InfraQuiz
+	#category : #InfraQuizExecutor
 }
 
 { #category : #execution }

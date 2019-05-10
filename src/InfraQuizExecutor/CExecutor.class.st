@@ -1,7 +1,10 @@
+"
+TODO
+"
 Class {
 	#name : #CExecutor,
 	#superclass : #CodeExecutor,
-	#category : #InfraQuiz
+	#category : #InfraQuizExecutor
 }
 
 { #category : #execution }

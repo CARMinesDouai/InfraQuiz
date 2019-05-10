@@ -30,7 +30,7 @@ Class {
 		'outputFile',
 		'result'
 	],
-	#category : #InfraQuiz
+	#category : #InfraQuizExecutor
 }
 
 { #category : #action }
