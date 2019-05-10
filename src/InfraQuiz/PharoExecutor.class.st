@@ -19,6 +19,7 @@ PharoExecutor class >> new:code [
 
 { #category : #execution }
 PharoExecutor >> evalCode [
+	"Evalue notre code"
 	|temp temp2|
 	temp:= self code copyReplaceAll: String cr with: ''.
 	temp2:=temp copyReplaceAll: String lf with: ''.
