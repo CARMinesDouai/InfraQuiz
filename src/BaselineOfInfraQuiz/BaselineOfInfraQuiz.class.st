@@ -20,6 +20,10 @@ BaselineOfInfraQuiz >> baseline: spec [
 			spec
 				className: 'ConfigurationOfOSProcess';
 				loads: #('Core');
-				repository: 'http://www.squeaksource.com/MetacelloRepository' ]		
+				repository: 'http://www.squeaksource.com/MetacelloRepository' ].
+			
+		spec package: 'InfraQuiz' with: [ spec requires: #('Bootstrap' 'OSProcess') ].
+
+		spec group: 'default' with: #( 'InfraQuiz' )
 	]
 ]
