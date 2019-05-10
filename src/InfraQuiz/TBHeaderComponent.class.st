@@ -11,7 +11,7 @@ aDescription := 'Un site de quiz pour apprendre à programmer'.
 	^aDescription.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #rendering }
 TBHeaderComponent >> renderBrandOn: html [
 html tbsNavbarHeader: [
 html tbsNavbarBrand
