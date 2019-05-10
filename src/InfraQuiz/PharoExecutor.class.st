@@ -20,8 +20,9 @@ PharoExecutor class >> new:code [
 { #category : #execution }
 PharoExecutor >> evalCode [
 	"Evalue notre code"
-	|temp temp2|
+	|temp temp2 temp3|
 	temp:= self code copyReplaceAll: String cr with: ''.
 	temp2:=temp copyReplaceAll: String lf with: ''.
-	OSProcess waitForCommand: './pharo Pharo.image eval "',temp2,'" > out.txt'.
+	temp3:= temp2 copyReplaceAll: '"' with: ''.
+	OSProcess waitForCommand: './pharo Pharo.image eval "',temp3,'" > out.txt'.
 ]

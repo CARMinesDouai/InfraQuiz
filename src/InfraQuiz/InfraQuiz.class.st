@@ -5,9 +5,13 @@ This application is made as part of a PDR and will eventually make a QUIZ where 
 
 Instance variables :
 	result: <ByteString>
+	oldCode: <ByteString>
 	
 result
 	- Result of the last run (Corresponds to the printIt)
+	
+oldCode
+	- The code written previously.
 "
 Class {
 	#name : #InfraQuiz,
