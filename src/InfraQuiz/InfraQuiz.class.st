@@ -30,7 +30,7 @@ InfraQuiz class >> canBeRoot [
 	^true
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #acccessing }
 InfraQuiz class >> description [
 |aDescription|
 aDescription := 'Un site de quiz pour apprendre à programmer developpé par des étudiants de L'+'IMT Lille-Douai'.
@@ -64,13 +64,8 @@ InfraQuiz >> children: anObject [
 
 { #category : #actions }
 InfraQuiz >> executeCode: code [
-	|input|
 	self oldCode: code.
-	(PharoExecutor new: code) evalCode.
-	"input := 'in.st' asFileReference.
-	input writeStreamDo: [ :stream | stream nextPutAll: code ].
-	PharoExecutor executeFromFile."
-	self result: 'out.txt' asFileReference readStream upToEnd.
+	self result: (PharoExecutor executeMyCode: code).
 ]
 
 { #category : #testing }
