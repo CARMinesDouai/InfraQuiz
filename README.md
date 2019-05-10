@@ -4,8 +4,14 @@
 
 ## Automatic
 
+- First installation, create a main image and a recover image :
 ```bash
-./createPharoImage.sh
+./resetAndRecreateBase.sh
+```
+
+- If your main image is corrupted, use the recover image :
+```bash
+./recreateFromBase.sh
 ```
 
 ## Manual
@@ -15,11 +21,11 @@
 - Install Bootstrap for Seaside: https://github.com/astares/Seaside-Bootstrap 
 - Install OSProcess (bridge to command line):
 
-More details in: [src/install.st](src/install.st)
+More details in: [src/BaselineOfInfraQuiz/BaselineOfInfraQuiz.class.st](src/BaselineOfInfraQuiz/BaselineOfInfraQuiz.class.st)
 
 ## InfraQuiz code
 
-The code is in: [src/InfraQuiz.st](src/InfraQuiz.st)
+The code is in: [src/InfraQuiz](src/InfraQuiz)
 
 # OLD STUFF that must be UPDATED
 
