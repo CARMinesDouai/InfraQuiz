@@ -4,10 +4,10 @@
 
 wget -O- https://get.pharo.org/64 | bash
 
-./pharo Pharo.image save ImageBase
+./pharo Pharo.image save InfraQuiz
 
-./pharo ImageBase.image st --save --quit src/install.st
+./pharo InfraQuiz.image eval --save "Metacello new baseline: 'InfraQuiz'; repository: 'gitlocal://./src'; load."
 
-./pharo ImageBase.image save InfraQuiz
-
-./pharo InfraQuiz.image st --save --quit src/InfraQuiz.st
+# ./pharo InfraQuiz.image st --save --quit src/install.st
+# ./pharo ImageBase.image save InfraQuiz
+# ./pharo InfraQuiz.image st --save --quit src/InfraQuiz.st
