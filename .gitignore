@@ -7,4 +7,6 @@ pharo-vm
 pharo-local
 PharoDebug.log
 out.txt
-in.st
+input.st
+input.c
+dockerc

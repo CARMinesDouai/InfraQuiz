@@ -63,6 +63,7 @@ The code is in: [src/InfraQuiz](src/InfraQuiz)
 - https://hub.docker.com/r/pharo/image
 - http://wiki.astares.com/pharo/613
 - https://www.samadhiweb.com/blog/2018.09.09.docker.html
+- https://devopscube.com/run-scripts-docker-arguments/
 - résultats dans la page Web
 - stdout / stderr
 - fichiers
