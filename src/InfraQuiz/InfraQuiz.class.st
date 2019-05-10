@@ -4,8 +4,8 @@ InfraQuiz is (at the moment) an application that lets you run Pharo code from a 
 This application is made as part of a PDR and will eventually make a QUIZ where you can enter code to answer a question.
 
 Instance variables :
-	result: <ByteString>
-	oldCode: <ByteString>
+	result: <String>
+	oldCode: <String>
 	
 result
 	- Result of the last run (Corresponds to the printIt)
@@ -64,6 +64,7 @@ InfraQuiz >> children: anObject [
 
 { #category : #actions }
 InfraQuiz >> executeCode: code [
+	"Call the good Executor and store the code and the result"
 	self oldCode: code.
 	self result: (PharoExecutor executeMyCode: code).
 ]
@@ -132,6 +133,7 @@ html tbsContainer
 
 { #category : #actions }
 InfraQuiz >> resetResult [
+	"Reset our input"
 	self result: nil.
 	self oldCode: nil.
 ]
