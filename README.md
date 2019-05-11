@@ -47,6 +47,7 @@ The code is in: [src/InfraQuiz](src/InfraQuiz) and [src/InfraQuizExecutor](src/I
 
 - Docker
 - Utile pour dev : https://fuhrmanator.github.io/2019/02/27/Pharo-in-WSL.html
+- C in docker : https://nextbreakpoint.com/posts/article-compile-code-with-docker.html
 
 # Votre projet
 
