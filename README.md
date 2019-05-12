@@ -38,12 +38,23 @@ The code is in: [src/InfraQuiz](src/InfraQuiz) and [src/InfraQuizExecutor](src/I
 - If an error has been made, it will be displayed in the result.
 - You can reset your entries by clicking Reset.
 
-## Solutions Similaires 
+## Similar solutions 
+#Jupyter Notebook
 
 - JupyterTalk *https://github.com/jmari/JupyterTalk*
+
+With this application is possible to extend the console-based approach to interactive computing in a way that provides a web-based application suitable for capturing the whole computation process: developing, documenting, and executing code, as well as communicating the results. It combines two components: 
+-A web application which is a browser-based tool for interactive documents which contains explanatory text, mathematics, computations and a rich media output
+
+-Notebook document which is a representation of all content visible in the web application, including inputs and outputs of the computations, explanatory text, mathematics, images, and rich media representations of objects.
+
+It is possible to have notebooks in about 40 programming languages thanks to a kernel associated to each notebook. They are organized in units called cells that can be executed by clicking a run command, The run command sends the code written by the user to the kernel,   it executes and communicates back results. 
+One disavantage of this application is that it is not possible to combine 2 programming languages into the same notebook, because each notebook is only associated to one kernel, that will run the syntax of the desired programming language.
+
+
 - Tech.io https://tech.io/
 
-## Solutions techniques à regarder 
+## Technical Solutions to have in mind  
 
 - Docker
 - Utile pour dev : https://fuhrmanator.github.io/2019/02/27/Pharo-in-WSL.html
