@@ -7,12 +7,18 @@ Class {
 	#category : #InfraQuiz
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #hooks }
 TBScreenComponent >> children [
-^ OrderedCollection with: header
+^ {header}
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #creating }
+TBScreenComponent >> createCodeComponent [
+   ^TBCodeComponent new
+
+]
+
+{ #category : #creating }
 TBScreenComponent >> createHeaderComponent [
    ^TBHeaderComponent new
 
@@ -21,11 +27,13 @@ TBScreenComponent >> createHeaderComponent [
 { #category : #initialization }
 TBScreenComponent >> initialize [ 
 super initialize.
-header := TBHeaderComponent new.
+header := self createHeaderComponent.
+"code:= self createCodeComponent."
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #rendering }
 TBScreenComponent >> renderContentOn: html [
 
 html render: header.
+"html render: code."
 ]

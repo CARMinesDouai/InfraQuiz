@@ -77,7 +77,7 @@ InfraQuiz >> hasResult [
 { #category : #initialization }
 InfraQuiz >> initialize [ 
 	super initialize.
-	main := TBScreenComponent new .
+	main := TBCodeComponent  new."TBScreenComponent new."
 	result := nil
 ]
 
@@ -94,9 +94,9 @@ InfraQuiz >> oldCode: anObject [
 
 { #category : #content }
 InfraQuiz >> renderContentOn: html [
-html render: main.
-html tbsContainer
-	with: [ 
+
+		html render: main.
+		"
 	html tbsForm: [
 		html tbsFormGroup: [ 
 			html label for: 'inputCode'; with: 'Your Code:'.
@@ -117,7 +117,9 @@ html tbsContainer
 			callback: [ self resetResult ];
 			with: 'Reset'.
 	].
-	
+	"
+	html tbsContainer
+	with: [ 
 	html div
 		class: 'spacer';
 		style: 'height: 50px'.
@@ -129,6 +131,7 @@ html tbsContainer
 			text: self result
 	]
 ]
+ 
 ]
 
 { #category : #actions }
