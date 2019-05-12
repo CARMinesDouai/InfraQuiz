@@ -39,7 +39,7 @@ The code is in: [src/InfraQuiz](src/InfraQuiz) and [src/InfraQuizExecutor](src/I
 - You can reset your entries by clicking Reset.
 
 ## Similar solutions 
-# Jupyter Notebook
+### Jupyter Notebook
 
 - JupyterTalk *https://github.com/jmari/JupyterTalk*
 
@@ -53,7 +53,7 @@ It is possible to have notebooks in about 40 programming languages thanks to a k
 One disavantage of this application is that it is not possible to combine 2 programming languages into the same notebook, because each notebook is only associated to one kernel, that will run the syntax of the desired programming language.
 https://jupyter-notebook.readthedocs.io/en/latest/notebook.html#introduction
 
-# Tech.io
+### Tech.io
 
 - Tech.io https://tech.io/
 It is a free and open knowledge-sharing platform created and edited by a community of volunteers around the world, which aims to allow anyone to learn about any programming language, framework, or API, thanks to the contribution of creators around the world.
