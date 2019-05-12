@@ -39,7 +39,7 @@ The code is in: [src/InfraQuiz](src/InfraQuiz) and [src/InfraQuizExecutor](src/I
 - You can reset your entries by clicking Reset.
 
 ## Similar solutions 
-#Jupyter Notebook
+# Jupyter Notebook
 
 - JupyterTalk *https://github.com/jmari/JupyterTalk*
 
@@ -49,10 +49,18 @@ With this application is possible to extend the console-based approach to intera
 -Notebook document which is a representation of all content visible in the web application, including inputs and outputs of the computations, explanatory text, mathematics, images, and rich media representations of objects.
 
 It is possible to have notebooks in about 40 programming languages thanks to a kernel associated to each notebook. They are organized in units called cells that can be executed by clicking a run command, The run command sends the code written by the user to the kernel,   it executes and communicates back results. 
-One disavantage of this application is that it is not possible to combine 2 programming languages into the same notebook, because each notebook is only associated to one kernel, that will run the syntax of the desired programming language.
 
+One disavantage of this application is that it is not possible to combine 2 programming languages into the same notebook, because each notebook is only associated to one kernel, that will run the syntax of the desired programming language.
+https://jupyter-notebook.readthedocs.io/en/latest/notebook.html#introduction
+
+# Tech.io
 
 - Tech.io https://tech.io/
+It is a free and open knowledge-sharing platform created and edited by a community of volunteers around the world, which aims to allow anyone to learn about any programming language, framework, or API, thanks to the contribution of creators around the world.
+It works in the form of playgrounds that can have runnable code examples, an article explaining a concept, a how-to tutorial or even a Quiz.
+To start a playground we need to have Git installed in your computer and also a basic knowledge about Git.
+Playgrounds can run codes of different programming languages as the platform uses Docker to run them.
+
 
 ## Technical Solutions to have in mind  
 
