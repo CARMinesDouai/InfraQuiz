@@ -36,19 +36,19 @@ html tbsForm: [
 ]
 
 { #category : #rendering }
-TBCodeComponent >> renderContentOn: html from:  Name [ | already |
-already defined ->InfraQuiz
+TBCodeComponent >> renderContentOn: html from:aClass [
+
 super renderContentOn: html.
-html text: 'Code bloc here !!!'.
+html tbsContainer with:[
 html tbsForm: [
 		html tbsFormGroup: [ 
 			html label for: 'inputCode'; with: 'Your Code:'.
 			html textArea 
 				style: 'width: 60%; height: 200px';
-				callback: [ : code | InfraQuiz  executeCode: code with: PharoExecutor ];
+				callback: [ : code | aClass  executeCode: code with: PharoExecutor ];
 				tbsFormControl; 
 				id: 'exampleInputEmail1'; 
-				text: InfraQuiz oldCode.
+				text: aClass oldCode.
 		].	
 		
 		html tbsSubmitButton 
@@ -57,8 +57,10 @@ html tbsForm: [
 		html space.
 		html tbsButton
 			beDefault;
-			callback: [InfraQuiz resetResult ];
+			callback: [aClass resetResult ];
 			with: 'Reset'.
+			
 	].
+]
 
 ]

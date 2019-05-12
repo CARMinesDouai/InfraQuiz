@@ -95,7 +95,7 @@ InfraQuiz >> oldCode: anObject [
 { #category : #content }
 InfraQuiz >> renderContentOn: html [
 
-		html render: main.
+		 main renderContentOn:html  from: self.
 		"
 	html tbsForm: [
 		html tbsFormGroup: [ 
