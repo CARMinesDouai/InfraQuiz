@@ -27,6 +27,8 @@ More details in: [src/BaselineOfInfraQuiz/BaselineOfInfraQuiz.class.st](src/Base
 
 The code is in: [src/InfraQuiz](src/InfraQuiz) and [src/InfraQuizExecutor](src/InfraQuizExecutor)
 
+## Docker
+
 # OLD STUFF that must be UPDATED
 
 ## Usage
