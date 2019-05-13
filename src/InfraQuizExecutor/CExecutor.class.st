@@ -10,10 +10,7 @@ Class {
 { #category : #execution }
 CExecutor >> evalCode [
 	|input|
-	input := 'c/src/input.c' asFileReference.
+	input := 'input.c' asFileReference.
 	input writeStreamDo: [ :stream | stream nextPutAll: code ].
-	OSProcess waitForCommand: 'docker run -it -v $(pwd)/c:/c dockerc gcc -o /c/bin/input /c/src/input.c
-'.
-	OSProcess waitForCommand: 'docker run -it -v $(pwd)/c:/c dockerc /c/bin/input > ',self outputFile.
-	self saveOutput .
+	OSProcess waitForCommand: ''.
 ]
