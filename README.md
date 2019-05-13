@@ -7,6 +7,7 @@
 - First installation, create a main image and a recover image :
 ```bash
 ./resetAndRecreateBase.sh
+sudo ./installDocker.sh
 ```
 
 - If your main image is corrupted, use the recover image :
