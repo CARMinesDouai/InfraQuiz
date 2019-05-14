@@ -3,7 +3,7 @@ TODO
 "
 Class {
 	#name : #CExecutor,
-	#superclass : #CodeExecutor,
+	#superclass : #DockerBasedExecutor,
 	#instVars : [
 		'srcDirectory'
 	],
