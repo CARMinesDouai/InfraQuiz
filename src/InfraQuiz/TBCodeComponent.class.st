@@ -71,7 +71,6 @@ TBCodeComponent >> oldCode: anObject [
 
 { #category : #rendering }
 TBCodeComponent >> renderContentOn: html [
-super renderContentOn: html.
 html tbsContainer with:[
 html tbsForm: [
 		html tbsFormGroup: [ 

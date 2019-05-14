@@ -31,7 +31,7 @@ InfraQuiz class >> canBeRoot [
 { #category : #acccessing }
 InfraQuiz class >> description [
 |aDescription|
-aDescription := 'Un site de quiz pour apprendre à programmer developpé par des étudiants de L'+'IMT Lille-Douai'.
+aDescription := 'Un site de quiz pour apprendre à programmer developpé par des étudiants de L''IMT Lille-Douai'.
 	^aDescription.
 ]
 
@@ -82,44 +82,30 @@ InfraQuiz >> initialize [
 InfraQuiz >> renderContentOn: html [
 	
 	html tbsRow
-		with: [ "html render: main.
-		"
-			"html tbsForm: [
-		html tbsFormGroup: [ 
-			html label for: 'inputCode'; with: 'Your Code:'.
-			html textArea 
-				style: 'width: 60%; height: 200px';
-				callback: [ :code | self executeCode: code with: PharoExecutor ];
-				tbsFormControl; 
-				id: 'exampleInputEmail1'; 
-				text: self oldCode.
-		].	
-		
-		html tbsSubmitButton 
-			bePrimary;
-			with: 'Execute'.
-		html space.
-		html tbsButton
-			beDefault;
-			callback: [ self resetResult ];
-			with: 'Reset'.
-	].
-	"
-			html tbsColumn: [ self renderMenuOn: html ] mediumSize: 2.
+		with: [ 
+			self renderMenuOn: html.
 			html tbsColumn: [ html render: self selectedChild ] mediumSize: 10 ]
 ]
 
 { #category : #rendering }
-InfraQuiz >> renderMenuOn:html [
-|item|
-html form:[
-html tbsListGroup: [ 
-		self children doWithIndex:  [:child :i |
-			item:= html tbsLinkifyListGroupItem.
-			self selectedChild = child ifTrue:  [ item beActive ].
-			item callback: [ selectedChild := self children at: i ];
-				  with: child codeType ]] ]
-
+InfraQuiz >> renderMenuOn: html [
+	| item |
+	html tbsNavbar beDefault
+		with: [ html
+				tbsContainer: [ html
+						tbsNavbarHeader: [ html tbsNavbarBrand
+								url: self application url;
+								with: self class description ] ].
+			html
+				form: [ html
+						tbsListGroup: [ self children
+								doWithIndex: [ :child :i | 
+									item := html tbsLinkifyListGroupItem.
+									self selectedChild = child
+										ifTrue: [ item beActive ].
+									item
+										callback: [ selectedChild := self children at: i ];
+										with: child codeType ] ] ] ]
 ]
 
 { #category : #actions }
