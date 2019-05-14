@@ -17,8 +17,6 @@ Class {
 	#name : #InfraQuiz,
 	#superclass : #WAComponent,
 	#instVars : [
-		'result',
-		'oldCode',
 		'children',
 		'selectedChild'
 	],
@@ -64,34 +62,25 @@ InfraQuiz >> executeCode: code with: executor [
 	self result: (executor executeMyCode: code).
 ]
 
-{ #category : #testing }
-InfraQuiz >> hasResult [
-	^ self result notNil
-]
-
 { #category : #initialization }
-InfraQuiz >> initialize [ 
+InfraQuiz >> initialize [
 	super initialize.
-	children := (1 to: 2) collect:[ :each| TBCodeComponent  new aClass: self ;  yourself ]. "TBScreenComponent new."
-	selectedChild := children first.
-	result := nil
-]
-
-{ #category : #accessing }
-InfraQuiz >> oldCode [
-	oldCode ifNil: [ oldCode := '10  factorial' ].
-	^ oldCode
-]
-
-{ #category : #accessing }
-InfraQuiz >> oldCode: anObject [
-	oldCode := anObject
+	children := (1 to: 2) collect: [ :each | TBCodeComponent new ].	"TBScreenComponent new."
+	children first
+		executorType: PharoExecutor;
+		codeType: 'Pharo programming';
+		yourself.
+	children last
+		executorType: CExecutor;
+		codeType: 'C programming';
+		oldCode: '#include <stdio.h>';
+		yourself.
+	selectedChild := children first
 ]
 
 { #category : #rendering }
 InfraQuiz >> renderContentOn: html [
-	children first executorType: PharoExecutor.
-	children last executorType: CExecutor.
+	
 	html tbsRow
 		with: [ "html render: main.
 		"
@@ -129,7 +118,7 @@ html tbsListGroup: [
 			item:= html tbsLinkifyListGroupItem.
 			self selectedChild = child ifTrue:  [ item beActive ].
 			item callback: [ selectedChild := self children at: i ];
-				  with: children className ]] ]
+				  with: child codeType ]] ]
 
 ]
 
@@ -138,16 +127,6 @@ InfraQuiz >> resetResult [
 	"Reset our input"
 	self result: nil.
 	self oldCode: nil.
-]
-
-{ #category : #accessing }
-InfraQuiz >> result [
-	^ result
-]
-
-{ #category : #accessing }
-InfraQuiz >> result: anObject [
-	result := anObject
 ]
 
 { #category : #accessing }

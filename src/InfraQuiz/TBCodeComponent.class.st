@@ -12,22 +12,13 @@ Class {
 	#name : #TBCodeComponent,
 	#superclass : #TBScreenComponent,
 	#instVars : [
+		'result',
+		'oldCode',
 		'codeType',
-		'aClass',
 		'executorType'
 	],
 	#category : #InfraQuiz
 }
-
-{ #category : #accessing }
-TBCodeComponent >> aClass [
-	^ aClass
-]
-
-{ #category : #accessing }
-TBCodeComponent >> aClass: anObject [
-	aClass := anObject
-]
 
 { #category : #accessing }
 TBCodeComponent >> codeType [
@@ -37,6 +28,13 @@ TBCodeComponent >> codeType [
 { #category : #accessing }
 TBCodeComponent >> codeType: anObject [
 	codeType := anObject
+]
+
+{ #category : #actions }
+TBCodeComponent >> executeCode: code with: executor [
+	"Call the good Executor and store the code and the result"
+	self oldCode: code.
+	self result: (executor executeMyCode: code).
 ]
 
 { #category : #accessing }
@@ -49,6 +47,28 @@ TBCodeComponent >> executorType: anObject [
 	executorType := anObject
 ]
 
+{ #category : #testing }
+TBCodeComponent >> hasResult [
+	^ self result notNil
+]
+
+{ #category : #initialization }
+TBCodeComponent >> initialize [ 
+super initialize
+result:nil.
+]
+
+{ #category : #accessing }
+TBCodeComponent >> oldCode [
+	oldCode ifNil: [ oldCode := '10  factorial' ].
+	^ oldCode
+]
+
+{ #category : #accessing }
+TBCodeComponent >> oldCode: anObject [
+	oldCode := anObject
+]
+
 { #category : #rendering }
 TBCodeComponent >> renderContentOn: html [
 super renderContentOn: html.
@@ -58,10 +78,10 @@ html tbsForm: [
 			html label for: 'inputCode'; with: 'Your Code:'.
 			html textArea 
 				style: 'width: 60%; height: 200px';
-				callback: [ : code | self aClass  executeCode: code with: self executorType  ];
+				callback: [ : code | self executeCode: code with: self executorType  ];
 				tbsFormControl; 
 				id: 'exampleInputEmail1'; 
-				text: self aClass oldCode.
+				text: self  oldCode.
 		].	
 		
 		html tbsSubmitButton 
@@ -70,7 +90,7 @@ html tbsForm: [
 		html space.
 		html tbsButton
 			beDefault;
-			callback: [ self aClass resetResult ];
+			callback: [ self  resetResult ];
 			with: 'Reset'.
 			
 	].
@@ -79,43 +99,28 @@ html tbsForm: [
 		class: 'spacer';
 		style: 'height: 50px'.
 	
-	self aClass hasResult ifTrue: [ 
+	self  hasResult ifTrue: [ 
 		html heading level:4; with: 'Output:'.
 		html textArea 
 			style: 'width: 60%; height: 200px';
-			text: self aClass result
-
-]
-]
-
+			text: self result
+			].
+].
 ]
 
-{ #category : #rendering }
-TBCodeComponent >> renderContentOn: html from:aClass with:anExecutor [
-
-super renderContentOn: html.
-html tbsContainer with:[
-html tbsForm: [
-		html tbsFormGroup: [ 
-			html label for: 'inputCode'; with: 'Your Code:'.
-			html textArea 
-				style: 'width: 60%; height: 200px';
-				callback: [ : code | aClass  executeCode: code with: anExecutor ];
-				tbsFormControl; 
-				id: 'exampleInputEmail1'; 
-				text: aClass oldCode.
-		].	
-		
-		html tbsSubmitButton 
-			bePrimary;
-			with: 'Execute'.
-		html space.
-		html tbsButton
-			beDefault;
-			callback: [aClass resetResult ];
-			with: 'Reset'.
-			
-	].
+{ #category : #initialization }
+TBCodeComponent >> resetResult [
+	"Reset our input"
+	self result: nil.
+	self oldCode: nil.
 ]
 
+{ #category : #accessing }
+TBCodeComponent >> result [
+	^ result
+]
+
+{ #category : #accessing }
+TBCodeComponent >> result: anObject [
+	result := anObject
 ]
