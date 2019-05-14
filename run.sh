@@ -1,4 +1,4 @@
 #!/bin/bash
 
 ./pharo InfraQuiz.image --no-quit&
-./pharo Executor.image eval --no-quit SeamlessNetwork new startServerOn: 40422.& 
+docker run --name sandbox -d -p:40422:40422 dockerexecutor

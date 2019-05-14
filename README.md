@@ -13,6 +13,11 @@
 sudo ./installDocker.sh
 ```
 
+- Build Docker container for Pharo :
+```bash
+./createDockerExecutor.sh
+```
+
 - Build Docker container for C :
 ```bash
 ./createCDocker.sh

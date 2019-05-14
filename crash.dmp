@@ -1,0 +1,403 @@
+
+Segmentation fault Tue May 14 21:25:46 2019
+
+
+/home/maxence/InfraQuiz/pharo-vm/lib/pharo/5.0-201901051900/pharo
+Pharo VM version: 5.0-201901051900  Sat Jan  5 19:12:50 UTC 2019 gcc 4.8 [Production Spur 64-bit VM]
+Built from: CoInterpreter VMMaker.oscog-eem.2504 uuid: a00b0fad-c04c-47a6-8a11-5dbff110ac11 Jan  5 2019
+With: StackToRegisterMappingCogit VMMaker.oscog-eem.2504 uuid: a00b0fad-c04c-47a6-8a11-5dbff110ac11 Jan  5 2019
+Revision: VM: 201901051900 https://github.com/OpenSmalltalk/opensmalltalk-vm.git Date: Sat Jan 5 20:00:11 2019 CommitHash: 7a3c6b64 Plugins: 201901051900 https://github.com/OpenSmalltalk/opensmalltalk-vm.git
+Build host: Linux travis-job-f22c8934-2412-48ed-8180-7a42b62c7389 4.4.0-101-generic #124~14.04.1-Ubuntu SMP Fri Nov 10 19:05:36 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
+plugin path: /home/maxence/InfraQuiz/pharo-vm/lib/pharo/5.0-201901051900 [default: /home/maxence/InfraQuiz/pharo-vm/lib/pharo/5.0-201901051900/]
+
+
+C stack backtrace & registers:
+	rax 0x00000010 rbx 0x0237aa08 rcx 0x00000000 rdx 0x00000000
+	rdi 0x000000c8 rsi 0x000000c8 rbp 0x7ffef1c2dde0 rsp 0x7ffef1c29bf8
+	r8  0x00000000 r9  0x00000000 r10 0x00000006 r11 0x00000000
+	r12 0x00000000 r13 0x00000000 r14 0x00000001 r15 0x7fe2a0f4c230
+	rip 0x7fe2a0f4c235
+*/usr/lib/x86_64-linux-gnu/libfreetype.so.6(FT_Outline_Translate+0x5)[0x7fe2a0f4c235]
+/home/maxence/InfraQuiz/pharo-vm/lib/pharo/5.0-201901051900/pharo[0x41b0d3]
+/home/maxence/InfraQuiz/pharo-vm/lib/pharo/5.0-201901051900/pharo[0x41cb15]
+/lib/x86_64-linux-gnu/libpthread.so.0(+0x12890)[0x7fe2acfe6890]
+/usr/lib/x86_64-linux-gnu/libfreetype.so.6(FT_Outline_Translate+0x5)[0x7fe2a0f4c235]
+/home/maxence/InfraQuiz/pharo-vm/lib/pharo/5.0-201901051900/pharo[0x4cb016]
+/home/maxence/InfraQuiz/pharo-vm/lib/pharo/5.0-201901051900/pharo[0x4586d7]
+/home/maxence/InfraQuiz/pharo-vm/lib/pharo/5.0-201901051900/pharo[0x459f0b]
+/home/maxence/InfraQuiz/pharo-vm/lib/pharo/5.0-201901051900/pharo(ceSendsupertonumArgs+0x289)[0x45c5b9]
+[0x2000100]
+[0x0]
+
+
+Smalltalk stack dump:
+    0x7ffef1c3bd10 M FreeTypeFace(FT2Face)>ffiTranslateOutline:x:y: 0x621d918: a(n) FreeTypeFace
+    0x7ffef1c3bd88 I FFICalloutAPI>function:module: 0x2361718: a(n) FFICalloutAPI
+    0x7ffef1c3bdd8 I FreeTypeFace(Object)>ffiCall: 0x621d918: a(n) FreeTypeFace
+    0x7ffef1c3be20 I FreeTypeFace>ffiTranslateOutline:x:y: 0x621d918: a(n) FreeTypeFace
+    0x7ffef1c3be78 I FreeTypeFace(FT2Face)>primTranslateGlyphSlotOutline: 0x621d918: a(n) FreeTypeFace
+         0x6231580 s FreeTypeFace(FT2Face)>translateOutlineBy:
+         0x6232560 s FreeTypeSubPixelAntiAliasedGlyphRenderer>renderStretchedGlyph:depth:subpixelPosition:font:
+         0x6235d00 s FreeTypeSubPixelAntiAliasedGlyphRenderer>subGlyphOf:colorValue:mono:subpixelPosition:font:
+         0x6238e70 s [] in FreeTypeFont>subGlyphOf:colorValue:mono:subpixelPosition:
+         0x623e240 s [] in Semaphore>critical:
+         0x6242208 s BlockClosure>ensure:
+         0x6264e78 s Semaphore>critical:
+         0x6242308 s [] in FreeTypeFont>subGlyphOf:colorValue:mono:subpixelPosition:
+         0x6264f58 s FreeTypeCache>atFont:charCode:type:ifAbsentPut:
+         0x6265208 s FreeTypeFont>subGlyphOf:colorValue:mono:subpixelPosition:
+         0x62655c8 s FreeTypeFont>glyphOf:destDepth:colorValue:subpixelPosition:
+         0x6265a18 s FreeTypeFont>displayString:on:from:to:at:kern:baselineY:
+         0x6265e88 s LogicalFont>displayString:on:from:to:at:kern:baselineY:
+         0x62662c8 s GrafPort(BitBlt)>displayString:from:to:at:kern:baselineY:font:
+         0x6266668 s RubDisplayScanner>displayLine:offset:leftInRun:
+         0x6266918 s RubParagraph>drawOn:using:at:
+         0x6266bb8 s RubOpeningClosingDelimiterDecorator(RubParagraphDecorator)>drawOn:using:at:
+         0x6266da0 s RubExtraSelectionDecorator(RubParagraphDecorator)>drawOn:using:at:
+         0x6267018 s RubCurrentLineBarDecorator(RubParagraphDecorator)>drawOn:using:at:
+         0x6267100 s RubShoutStylerDecorator(RubParagraphDecorator)>drawOn:using:at:
+         0x62671b8 s FormCanvas>rubParagraph:bounds:color:
+         0x6267270 s RubEditingArea(RubAbstractTextArea)>drawSubmorphsOn:
+         0x6267368 s [] in RubEditingArea(Morph)>fullDrawOn:
+         0x6267510 s FormCanvas>roundCornersOf:in:during:
+         0x6267620 s FormCanvas(Canvas)>roundCornersOf:during:
+         0x62676d8 s [] in RubEditingArea(Morph)>fullDrawOn:
+         0x6267790 s BlockClosure>on:do:
+         0x6267870 s RubEditingArea(Morph)>fullDrawOn:
+         0x6267950 s FormCanvas(Canvas)>fullDraw:
+         0x6267a08 s FormCanvas(Canvas)>fullDrawMorph:
+         0x6267ac0 s [] in TransformWithLayoutMorph(TransformMorph)>drawSubmorphsOn:
+         0x6267b78 s Array(SequenceableCollection)>reverseDo:
+         0x6267c58 s [] in TransformWithLayoutMorph(TransformMorph)>drawSubmorphsOn:
+         0x6267d10 s FormCanvas>transformBy:clippingTo:during:smoothing:
+         0x6267de8 s TransformWithLayoutMorph(TransformMorph)>drawSubmorphsOn:
+         0x6267ee0 s [] in TransformWithLayoutMorph(Morph)>fullDrawOn:
+         0x6268088 s FormCanvas>roundCornersOf:in:during:
+         0x6268198 s FormCanvas(Canvas)>roundCornersOf:during:
+         0x6268250 s [] in TransformWithLayoutMorph(Morph)>fullDrawOn:
+         0x6268308 s BlockClosure>on:do:
+         0x62683e8 s TransformWithLayoutMorph(Morph)>fullDrawOn:
+         0x62684c8 s FormCanvas(Canvas)>fullDraw:
+         0x6268580 s FormCanvas(Canvas)>fullDrawMorph:
+         0x6268638 s [] in RubTextScrollPane(Morph)>drawSubmorphsOn:
+         0x62686f0 s Array(SequenceableCollection)>reverseDo:
+         0x62687d0 s [] in RubTextScrollPane(Morph)>drawSubmorphsOn:
+         0x6268888 s RubTextScrollPane(Morph)>drawSubmorphsOn:
+         0x6268960 s RubTextScrollPane>drawSubmorphsOn:
+         0x6268a18 s [] in RubTextScrollPane(Morph)>fullDrawOn:
+         0x6268ad0 s FormCanvas>roundCornersOf:in:during:
+         0x6268bb0 s FormCanvas(Canvas)>roundCornersOf:during:
+         0x6268c68 s [] in RubTextScrollPane(Morph)>fullDrawOn:
+         0x6268d20 s BlockClosure>on:do:
+         0x6268e00 s RubTextScrollPane(Morph)>fullDrawOn:
+         0x6268ee0 s FormCanvas(Canvas)>fullDraw:
+         0x6268f98 s FormCanvas(Canvas)>fullDrawMorph:
+         0x6269050 s [] in RubScrolledTextMorph>drawSubmorphsOn:
+         0x6269108 s Array(SequenceableCollection)>reverseDo:
+         0x62691e8 s [] in RubScrolledTextMorph>drawSubmorphsOn:
+         0x62692b8 s FormCanvas>clipBy:during:
+         0x62693a8 s RubScrolledTextMorph>drawSubmorphsOn:
+         0x62694a0 s [] in RubScrolledTextMorph(Morph)>fullDrawOn:
+         0x6269648 s FormCanvas>roundCornersOf:in:during:
+         0x6269758 s FormCanvas(Canvas)>roundCornersOf:during:
+         0x6269810 s [] in RubScrolledTextMorph(Morph)>fullDrawOn:
+         0x62698c8 s BlockClosure>on:do:
+         0x62699a8 s RubScrolledTextMorph(Morph)>fullDrawOn:
+         0x6269a88 s FormCanvas(Canvas)>fullDraw:
+         0x6269b40 s FormCanvas(Canvas)>fullDrawMorph:
+         0x6269bf8 s [] in StandardWindow(Morph)>drawSubmorphsOn:
+         0x6269cb0 s Array(SequenceableCollection)>reverseDo:
+         0x6269d90 s [] in StandardWindow(Morph)>drawSubmorphsOn:
+         0x6269e48 s FormCanvas>clipBy:during:
+         0x6269f20 s StandardWindow(Morph)>drawSubmorphsOn:
+         0x626a018 s [] in StandardWindow(Morph)>fullDrawOn:
+         0x626a1c0 s FormCanvas>roundCornersOf:in:during:
+         0x626a2d0 s FormCanvas(Canvas)>roundCornersOf:during:
+         0x626a388 s [] in StandardWindow(Morph)>fullDrawOn:
+         0x626a440 s BlockClosure>on:do:
+         0x626a520 s StandardWindow(Morph)>fullDrawOn:
+         0x626a600 s FormCanvas(Canvas)>fullDraw:
+         0x626a6b8 s FormCanvas(Canvas)>fullDrawMorph:
+         0x626a770 s [] in WorldState>drawWorld:submorphs:invalidAreasOn:
+         0x626a968 s Rectangle>allAreasOutsideList:startingAt:do:
+         0x626ab40 s Rectangle>allAreasOutsideList:do:
+         0x626abf8 s [] in WorldState>drawWorld:submorphs:invalidAreasOn:
+         0x626afa8 s Array(SequenceableCollection)>do:
+         0x626b148 s WorldState>drawWorld:submorphs:invalidAreasOn:
+         0x626b470 s [] in WorldState>displayWorld:submorphs:
+         0x626b528 s FormCanvas>roundCornersOf:in:during:
+         0x626b630 s FormCanvas(Canvas)>roundCornersOf:during:
+         0x626b6e8 s WorldState>displayWorld:submorphs:
+         0x626b7a0 s WorldMorph>displayWorld
+         0x626b858 s [] in WorldState>displayWorldSafely:
+         0x626b910 s BlockClosure>on:do:
+         0x626b9f0 s BlockClosure>ifError:
+         0x626bad0 s WorldState>displayWorldSafely:
+         0x626bba8 s WorldState>doOneCycleNowFor:
+         0x61dca88 s WorldState>doOneCycleFor:
+         0x61dcb58 s WorldMorph>doOneCycle
+         0x60232e8 s WorldMorph class>doOneCycle
+         0x37e2370 s [] in MorphicUIManager>spawnNewProcess
+         0x37e2448 s [] in BlockClosure>newProcess
+
+Most recent primitives
+stringHash:initialHash:
+compare:with:collated:
+stringHash:initialHash:
+**StackOverflow**
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+basicNew
+compare:with:collated:
+compare:with:collated:
+indexOfAscii:inString:startingAt:
+indexOfAscii:inString:startingAt:
+indexOfAscii:inString:startingAt:
+**StackOverflow**
+stringHash:initialHash:
+compare:with:collated:
+compare:with:collated:
+compare:with:collated:
+stringHash:initialHash:
+compare:with:collated:
+stringHash:initialHash:
+stringHash:initialHash:
+**StackOverflow**
+stringHash:initialHash:
+compare:with:collated:
+**StackOverflow**
+stringHash:initialHash:
+compare:with:collated:
+stringHash:initialHash:
+compare:with:collated:
+stringHash:initialHash:
+**StackOverflow**
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+compare:with:collated:
+compare:with:collated:
+compare:with:collated:
+basicNew
+basicNew
+basicNew
+basicNew
+shallowCopy
+basicSize
+basicAt:
+shallowCopy
+basicAt:put:
+basicAt:
+shallowCopy
+basicAt:put:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+class
+stringHash:initialHash:
+compare:with:collated:
+perform:
+stringHash:initialHash:
+perform:
+class
+shallowCopy
+perform:
+perform:
+perform:
+stringHash:initialHash:
+compare:with:collated:
+perform:
+stringHash:initialHash:
+compare:with:collated:
+basicNew
+replaceFrom:to:with:startingAt:
+stringHash:initialHash:
+stringHash:initialHash:
+value:
+stringHash:initialHash:
+compare:with:collated:
+basicNew
+class
+stringHash:initialHash:
+compare:with:collated:
+class
+basicIdentityHash
+stringHash:initialHash:
+compare:with:collated:
+basicIdentityHash
+basicIdentityHash
+basicNew
+basicNew
+basicNew
+basicNew
+basicNew
+basicNew
+initialize:
+shallowCopy
+stringHash:initialHash:
+basicNew
+basicIdentityHash
+clear
+at:
+class
+class
+size
+at:
+at:
+at:
+at:
+basicNew
+basicNew
+encoderClass
+basicNew
+basicNew
+basicNew
+basicNew
+basicNew
+value:
+basicNew
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+replaceFrom:to:with:startingAt:
+at:put:
+stringHash:initialHash:
+class
+parameterAt:
+**StackOverflow**
+stringHash:initialHash:
+setIsReadOnlyObject:
+basicIdentityHash
+stringHash:initialHash:
+push
+stringHash:initialHash:
+stringHash:initialHash:
+size
+size
+class
+isBytes
+indexOfAscii:inString:startingAt:
+indexOf:startingAt:
+indexOf:startingAt:
+indexOfAscii:inString:startingAt:
+indexOf:startingAt:
+class
+class
+stringHash:initialHash:
+stringHash:initialHash:
+genSend:numArgs:
+genSend:numArgs:
+new:
+replaceFrom:to:with:startingAt:
+new:
+quickMethodPrim
+basicNew
+size
+stringHash:initialHash:
+compare:with:collated:
+perform:
+encodeSourcePointer
+encodeSourcePointer
+newMethod:header:
+newMethod:header:
+-
+-
+at:
+at:put:
+at:put:
+at:put:
+at:put:
+basicNew
+on:
+at:put:
+at:put:
+at:put:
+at:put:
+at:put:
+at:put:
+at:put:
+at:put:
+at:put:
+objectAt:put:
+objectAt:put:
+objectAt:put:
+objectAt:put:
+species
+basicNew
+value:
+numTemps
+numTemps
+primitive
+objectAt:put:
+new:
+objectAt:
+at:put:
+objectAt:
+at:put:
+class
+objectAt:put:
+basicSize
+new:
+basicSize
+basicAt:
+basicAt:
+objectAt:put:
+stringHash:initialHash:
+stringHash:initialHash:
+objectAt:put:
+basicNew:
+instVarAt:
+instVarAt:put:
+instVarAt:
+instVarAt:put:
+objectAt:put:
+basicNew:
+instVarAt:
+instVarAt:put:
+instVarAt:
+instVarAt:put:
+objectAt:put:
+flushCache
+trailer
+at:
+at:
++
++
++
++
++
+size
+basicIdentityHash
+basicIdentityHash
+value:
+at:
+value:
+at:
+numArgs
+new:
+tempAt:
+at:put:
+tempAt:
+at:put:
+tempAt:
+at:put:
+withArgs:executeMethod:
+invokeWithArguments:
+
+stack page bytes 8192 available headroom 5576 minimum unused headroom 6048
+
+	(Segmentation fault)
