@@ -20,9 +20,7 @@ Class {
 		'result',
 		'oldCode',
 		'children',
-		'main',
-		'selectedChild',
-		'currentComponent'
+		'selectedChild'
 	],
 	#category : #InfraQuiz
 }
@@ -56,22 +54,7 @@ app addLibrary: TBSDeploymentLibrary.
 
 { #category : #accessing }
 InfraQuiz >> children [
-	^ main
-]
-
-{ #category : #accessing }
-InfraQuiz >> children: anObject [
-	children := anObject
-]
-
-{ #category : #accessing }
-InfraQuiz >> currentComponent [
-	^ currentComponent
-]
-
-{ #category : #accessing }
-InfraQuiz >> currentComponent: anObject [
-	currentComponent := anObject
+	^ children
 ]
 
 { #category : #actions }
@@ -89,14 +72,9 @@ InfraQuiz >> hasResult [
 { #category : #initialization }
 InfraQuiz >> initialize [ 
 	super initialize.
-	children := (1 to:2) collect:[:each| TBCodeComponent  new]. "TBScreenComponent new."
-	selectedChild:= children first.
+	children := (1 to: 2) collect:[ :each| TBCodeComponent  new aClass: self ;  yourself ]. "TBScreenComponent new."
+	selectedChild := children first.
 	result := nil
-]
-
-{ #category : #accessing }
-InfraQuiz >> main: anObject [
-	main := anObject
 ]
 
 { #category : #accessing }
@@ -112,20 +90,12 @@ InfraQuiz >> oldCode: anObject [
 
 { #category : #rendering }
 InfraQuiz >> renderContentOn: html [
-	children do:[:each| each aClass: self].
 	children first executorType: PharoExecutor.
-	children last executorType: CExecutor. 
-html tbsRow 	
-with: [  
-html tbsColumn:[ self renderMenuOn: html] mediumSize:2.
-html tbsColumn: [ currentComponent ifNotNil: [html render: selectedChild ]. 
-	
-	 ] mediumSize:10.
-]
- 
-		"html render: main.
+	children last executorType: CExecutor.
+	html tbsRow
+		with: [ "html render: main.
 		"
-	"html tbsForm: [
+			"html tbsForm: [
 		html tbsFormGroup: [ 
 			html label for: 'inputCode'; with: 'Your Code:'.
 			html textArea 
@@ -146,8 +116,8 @@ html tbsColumn: [ currentComponent ifNotNil: [html render: selectedChild ].
 			with: 'Reset'.
 	].
 	"
-	
-  
+			html tbsColumn: [ self renderMenuOn: html ] mediumSize: 2.
+			html tbsColumn: [ html render: self selectedChild ] mediumSize: 10 ]
 ]
 
 { #category : #rendering }
@@ -157,8 +127,8 @@ html form:[
 html tbsListGroup: [ 
 		self children doWithIndex:  [:child :i |
 			item:= html tbsLinkifyListGroupItem.
-			currentComponent class = child ifTrue:  [ item beActive ] ;
-			 callback: [ selectedChild:= self children at: i ];
+			self selectedChild = child ifTrue:  [ item beActive ].
+			item callback: [ selectedChild := self children at: i ];
 				  with: children className ]] ]
 
 ]
