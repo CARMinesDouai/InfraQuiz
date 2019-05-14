@@ -113,7 +113,8 @@ InfraQuiz >> oldCode: anObject [
 { #category : #rendering }
 InfraQuiz >> renderContentOn: html [
 	children do:[:each| each aClass: self].
-	children first executorType: PharoExecutor. 
+	children first executorType: PharoExecutor.
+	children last executorType: CExecutor. 
 html tbsRow 	
 with: [  
 html tbsColumn:[ self renderMenuOn: html] mediumSize:2.
