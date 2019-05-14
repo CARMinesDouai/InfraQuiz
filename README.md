@@ -2,12 +2,22 @@
 
 # Installation
 
+## Prerequisites
+
+- For installation, you need Ubuntu 18.04, a desktop is not needed.
+
+- Docker needs a complete Linux system, you cannot use WSL or Cygwin.
+
+- Install Docker and build the needed container :
+```bash
+sudo ./installDocker.sh
+```
+
 ## Automatic
 
 - First installation, create a main image and a recover image :
 ```bash
 ./resetAndRecreateBase.sh
-sudo ./installDocker.sh
 ```
 
 - If your main image is corrupted, use the recover image :
@@ -27,21 +37,6 @@ More details in: [src/BaselineOfInfraQuiz/BaselineOfInfraQuiz.class.st](src/Base
 ## InfraQuiz code
 
 The code is in: [src/InfraQuiz](src/InfraQuiz) and [src/InfraQuizExecutor](src/InfraQuizExecutor)
-
-## Docker
-
-TODO
-
-# OLD STUFF that must be UPDATED
-
-## Usage
-
-- You can enter one or more instructions.
-- To execute your entry, simply click on the Validate button.
-- The page display of the global of your foreclosures.
-- The result is a printIt.
-- If an error has been made, it will be displayed in the result.
-- You can reset your entries by clicking Reset.
 
 ## Similar solutions 
 ### Jupyter Notebook
