@@ -70,10 +70,22 @@ html tbsForm: [
 		html space.
 		html tbsButton
 			beDefault;
-			callback: [self aClass resetResult ];
+			callback: [ self aClass resetResult ];
 			with: 'Reset'.
 			
 	].
+
+	html div
+		class: 'spacer';
+		style: 'height: 50px'.
+	
+	self aClass hasResult ifTrue: [ 
+		html heading level:4; with: 'Output:'.
+		html textArea 
+			style: 'width: 60%; height: 200px';
+			text: self aClass result
+
+]
 ]
 
 ]

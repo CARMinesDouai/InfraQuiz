@@ -112,25 +112,13 @@ InfraQuiz >> oldCode: anObject [
 
 { #category : #rendering }
 InfraQuiz >> renderContentOn: html [
-	children first aClass: self.
+	children do:[:each| each aClass: self].
 	children first executorType: PharoExecutor. 
 html tbsRow 	
 with: [  
 html tbsColumn:[ self renderMenuOn: html] mediumSize:2.
-html tbsColumn: [ currentComponent ifNotNil: [html render: currentComponent]. 
-	html tbsContainer
-	with: [ 
-	html div
-		class: 'spacer';
-		style: 'height: 50px'.
+html tbsColumn: [ currentComponent ifNotNil: [html render: selectedChild ]. 
 	
-	self hasResult ifTrue: [ 
-		html heading level:4; with: 'Output:'.
-		html textArea 
-			style: 'width: 60%; height: 200px';
-			text: self result
-	]
-]
 	 ] mediumSize:10.
 ]
  
