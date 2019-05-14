@@ -20,7 +20,9 @@ Class {
 		'result',
 		'oldCode',
 		'children',
-		'main'
+		'main',
+		'selectedChild',
+		'currentComponent'
 	],
 	#category : #InfraQuiz
 }
@@ -54,12 +56,22 @@ app addLibrary: TBSDeploymentLibrary.
 
 { #category : #accessing }
 InfraQuiz >> children [
-	^ {children}
+	^ main
 ]
 
 { #category : #accessing }
 InfraQuiz >> children: anObject [
 	children := anObject
+]
+
+{ #category : #accessing }
+InfraQuiz >> currentComponent [
+	^ currentComponent
+]
+
+{ #category : #accessing }
+InfraQuiz >> currentComponent: anObject [
+	currentComponent := anObject
 ]
 
 { #category : #actions }
@@ -77,8 +89,14 @@ InfraQuiz >> hasResult [
 { #category : #initialization }
 InfraQuiz >> initialize [ 
 	super initialize.
-	main := TBCodeComponent  new."TBScreenComponent new."
+	children := (1 to:2) collect:[:each| TBCodeComponent  new]. "TBScreenComponent new."
+	selectedChild:= children first.
 	result := nil
+]
+
+{ #category : #accessing }
+InfraQuiz >> main: anObject [
+	main := anObject
 ]
 
 { #category : #accessing }
@@ -92,13 +110,33 @@ InfraQuiz >> oldCode: anObject [
 	oldCode := anObject
 ]
 
-{ #category : #content }
+{ #category : #rendering }
 InfraQuiz >> renderContentOn: html [
- main aClass: self.
-main executorType: PharoExecutor.  
-		html render: main.
+	children first aClass: self.
+	children first executorType: PharoExecutor. 
+html tbsRow 	
+with: [  
+html tbsColumn:[ self renderMenuOn: html] mediumSize:2.
+html tbsColumn: [ currentComponent ifNotNil: [html render: currentComponent]. 
+	html tbsContainer
+	with: [ 
+	html div
+		class: 'spacer';
+		style: 'height: 50px'.
+	
+	self hasResult ifTrue: [ 
+		html heading level:4; with: 'Output:'.
+		html textArea 
+			style: 'width: 60%; height: 200px';
+			text: self result
+	]
+]
+	 ] mediumSize:10.
+]
+ 
+		"html render: main.
 		"
-	html tbsForm: [
+	"html tbsForm: [
 		html tbsFormGroup: [ 
 			html label for: 'inputCode'; with: 'Your Code:'.
 			html textArea 
@@ -119,20 +157,21 @@ main executorType: PharoExecutor.
 			with: 'Reset'.
 	].
 	"
-	html tbsContainer
-	with: [ 
-	html div
-		class: 'spacer';
-		style: 'height: 50px'.
 	
-	self hasResult ifTrue: [ 
-		html heading level:4; with: 'Output:'.
-		html textArea 
-			style: 'width: 60%; height: 200px';
-			text: self result
-	]
+  
 ]
- 
+
+{ #category : #rendering }
+InfraQuiz >> renderMenuOn:html [
+|item|
+html form:[
+html tbsListGroup: [ 
+		self children doWithIndex:  [:child :i |
+			item:= html tbsLinkifyListGroupItem.
+			currentComponent class = child ifTrue:  [ item beActive ] ;
+			 callback: [ selectedChild:= self children at: i ];
+				  with: children className ]] ]
+
 ]
 
 { #category : #actions }
@@ -150,4 +189,14 @@ InfraQuiz >> result [
 { #category : #accessing }
 InfraQuiz >> result: anObject [
 	result := anObject
+]
+
+{ #category : #accessing }
+InfraQuiz >> selectedChild [
+	^ selectedChild
+]
+
+{ #category : #accessing }
+InfraQuiz >> selectedChild: anObject [
+	^ selectedChild := anObject
 ]
