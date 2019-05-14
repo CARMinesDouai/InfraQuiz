@@ -94,8 +94,9 @@ InfraQuiz >> oldCode: anObject [
 
 { #category : #content }
 InfraQuiz >> renderContentOn: html [
-
-		 main renderContentOn:html  from: self.
+ main aClass: self.
+main executorType: PharoExecutor.  
+		html render: main.
 		"
 	html tbsForm: [
 		html tbsFormGroup: [ 

@@ -22,7 +22,5 @@ with: self class description ]
 { #category : #rendering }
 TBHeaderComponent >> renderContentOn: html [
 html tbsNavbar beDefault with: [
-html tbsNavbarBrand
-url: '#';
-with: self class description ]
+self renderBrandOn: html. ]
 ]
