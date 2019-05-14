@@ -10,6 +10,4 @@ usermod -aG docker $USER
 systemctl start docker
 systemctl enable docker
 
-docker build -t dockerc dockerc
-
 reboot

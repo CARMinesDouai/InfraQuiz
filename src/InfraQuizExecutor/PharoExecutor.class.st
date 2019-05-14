@@ -3,15 +3,16 @@ Executor for Pharo codes
 "
 Class {
 	#name : #PharoExecutor,
-	#superclass : #CodeExecutor,
+	#superclass : #SeamlessBasedExecutor,
 	#category : #InfraQuizExecutor
 }
 
 { #category : #execution }
 PharoExecutor >> evalCode [
 	"Evaluate our code and store the result"
-	OSProcess waitForCommand: './pharo Pharo.image eval "',self filterCode,'" > ',self outputFile.
-	self saveOutput.
+	"OSProcess waitForCommand: './pharo Pharo.image eval ""',self filterCode,'"" > ',self outputFile.
+	self saveOutput."
+	self result: (self remoteExecute evaluate: self code).
 ]
 
 { #category : #execution }

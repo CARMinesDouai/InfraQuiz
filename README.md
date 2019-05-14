@@ -8,9 +8,19 @@
 
 - Docker needs a complete Linux system, you cannot use WSL or Cygwin.
 
-- Install Docker and build the needed container :
+- Install Docker :
 ```bash
 sudo ./installDocker.sh
+```
+
+- Build Docker container for Pharo :
+```bash
+./createDockerExecutor.sh
+```
+
+- Build Docker container for C :
+```bash
+./createCDocker.sh
 ```
 
 ## Automatic
@@ -37,6 +47,13 @@ More details in: [src/BaselineOfInfraQuiz/BaselineOfInfraQuiz.class.st](src/Base
 ## InfraQuiz code
 
 The code is in: [src/InfraQuiz](src/InfraQuiz) and [src/InfraQuizExecutor](src/InfraQuizExecutor)
+
+# Usage
+
+- Execute the following script to start the application
+```bash
+./run.sh
+```
 
 ## Similar solutions 
 ### Jupyter Notebook
