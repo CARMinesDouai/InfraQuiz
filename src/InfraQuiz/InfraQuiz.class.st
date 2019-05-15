@@ -18,7 +18,10 @@ Class {
 	#superclass : #WAComponent,
 	#instVars : [
 		'children',
-		'selectedChild'
+		'selectedChild',
+		'logoImage',
+		'srcDirectory',
+		'displayIntro'
 	],
 	#category : #InfraQuiz
 }
@@ -55,9 +58,17 @@ InfraQuiz >> children [
 	^ children
 ]
 
+{ #category : #actions }
+InfraQuiz >> enterTest [
+displayIntro := false.
+]
+
 { #category : #initialization }
 InfraQuiz >> initialize [
 	super initialize.
+	displayIntro := true.
+	srcDirectory := Smalltalk imageDirectory / 'src/images'.
+	srcDirectory ensureCreateDirectory.
 	children := (1 to: 2) collect: [ :each | TBCodeComponent new ].	"TBScreenComponent new."
 	children first
 		executorType: PharoSeamlessBasedExecutor;
@@ -77,24 +88,69 @@ InfraQuiz >> initialize [
 	selectedChild := children first
 ]
 
+{ #category : #testing }
+InfraQuiz >> isDisplayingIntro [
+
+	^displayIntro 
+]
+
 { #category : #rendering }
 InfraQuiz >> renderContentOn: html [
+	self renderHeaderBarOn: html.
+	self isDisplayingIntro
+		ifTrue: [ self renderIntroOn: html ]
+		ifFalse: [ html tbsRow
+				with: [ html tbsColumn: [ self renderMenuOn: html ] mediumSize: 2.
+					html
+						tbsColumn: [ html render: self selectedChild ]
+						mediumSize: 10 ] ]
+]
+
+{ #category : #rendering }
+InfraQuiz >> renderHeaderBarOn: html [
+html tbsNavbar beDefault;
+		with: [ html
+				tbsContainer: [ html
+						tbsNavbarHeader: [ 
+							html image tbsPullLeft; style: 'padding: 10px;';url: srcDirectory /
+							'InfraQuizIntro.png'.  
+							html tbsNavbarBrand
+								url: self application url;
+								with: self class description ] ].
+						html form: [ 	
+		html tbsNavbarButton 
+				tbsPullRight;
+				callback: [ self returnToIntro ]; 
+				with: 'Home'  ]]  
+		
 	
-	html tbsRow
-		with: [ 
-			self renderMenuOn: html.
-			html tbsColumn: [ html render: self selectedChild ] mediumSize: 10 ]
+]
+
+{ #category : #rendering }
+InfraQuiz >> renderIntroOn: html [
+	html tbsContainer: [ 
+	html tbsJumbotron: [ 		
+		html heading: 'Bienvenue à InfraQuiz'.
+		html image url: srcDirectory /'InfraQuiz.png'.
+		html break; break.
+		html paragraph: [
+			html text: 'une site crée par des étudiants de '.
+			html anchor url: 'http://imt-lille-douai.fr'; with: 'l''IMT Lille-Douai '.
+			html text: 'Alejandra ACEVEDO et Maxence GODEFERT'.
+			html text: ' Dans le cadre du projet de découvert de la recherche de la majeur ISIC'].
+		html paragraph: [
+			html form: [  
+			html tbsButton 
+				bePrimary;
+				beLarge;
+				callback: [ self enterTest ];
+				with: 'Commencez à tester' ]].]]
 ]
 
 { #category : #rendering }
 InfraQuiz >> renderMenuOn: html [
 	| item |
-	html tbsNavbar beDefault
-		with: [ html
-				tbsContainer: [ html
-						tbsNavbarHeader: [ html tbsNavbarBrand
-								url: self application url;
-								with: self class description ] ].
+	
 			html
 				form: [ html
 						tbsListGroup: [ self children
@@ -104,7 +160,7 @@ InfraQuiz >> renderMenuOn: html [
 										ifTrue: [ item beActive ].
 									item
 										callback: [ selectedChild := self children at: i ];
-										with: child codeType ] ] ] ]
+										with: child codeType ] ] ] 
 ]
 
 { #category : #actions }
@@ -112,6 +168,12 @@ InfraQuiz >> resetResult [
 	"Reset our input"
 	self result: nil.
 	self oldCode: nil.
+]
+
+{ #category : #actions }
+InfraQuiz >> returnToIntro [
+
+	displayIntro := true.
 ]
 
 { #category : #accessing }
