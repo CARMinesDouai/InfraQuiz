@@ -13,21 +13,16 @@
 sudo ./installDocker.sh
 ```
 
-- Build Docker container for Pharo :
+- Install gcc :
 ```bash
-./createDockerExecutor.sh
-```
-
-- Build Docker container for C :
-```bash
-./createCDocker.sh
+sudo apt-get install gcc
 ```
 
 ## Automatic
 
 - First installation, create a main image and a recover image :
 ```bash
-./resetAndRecreateBase.sh
+./completeInstall.sh
 ```
 
 - If your main image is corrupted, use the recover image :
