@@ -15,6 +15,7 @@ RUN  apt-get update \
   && apt-get install -y wget \
   && apt-get install -y git \
   && apt-get install -y unzip \
+  && apt-get install -y gcc \
   && rm -rf /var/lib/apt/lists/*
 
 ######################################
@@ -22,6 +23,7 @@ RUN  apt-get update \
 ######################################
 RUN mkdir executor
 WORKDIR executor
+RUN mkdir cbin
 
 ######################################
 # Download Pharo using Zeroconf & start script
