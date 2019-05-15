@@ -55,13 +55,6 @@ InfraQuiz >> children [
 	^ children
 ]
 
-{ #category : #actions }
-InfraQuiz >> executeCode: code with: executor [
-	"Call the good Executor and store the code and the result"
-	self oldCode: code.
-	self result: (executor executeMyCode: code).
-]
-
 { #category : #initialization }
 InfraQuiz >> initialize [
 	super initialize.
