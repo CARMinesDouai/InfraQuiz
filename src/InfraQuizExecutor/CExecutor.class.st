@@ -1,31 +1,20 @@
-"
-TODO
-"
 Class {
 	#name : #CExecutor,
-	#superclass : #DockerBasedExecutor,
-	#instVars : [
-		'srcDirectory'
-	],
+	#superclass : #SeamlessBasedExecutor,
 	#category : #InfraQuizExecutor
 }
 
 { #category : #execution }
 CExecutor >> evalCode [
-	self writeInputFile.
-	OSProcess waitForCommand: 'docker run -it -v ',Smalltalk imageDirectory pathString,'/c:/c dockerc gcc -o /c/bin/input /c/src/input.c'.
-	OSProcess waitForCommand: 'docker run -it -v ',Smalltalk imageDirectory pathString,'/c:/c dockerc /c/bin/input > ',self outputFile.
-	self saveOutput
+	|input|
+	input:='input.c' asFileReference.
+	input writeStreamDo: [ :stream | stream nextPutAll: self code ].
+	self remoteExecute waitForCommand: 'gcc -o cbin/input input.c'.
+	self remoteExecute waitForCommand: 'cbin/input'.
 ]
 
 { #category : #initialization }
 CExecutor >> initialize [
 	super initialize.
-	srcDirectory := Smalltalk imageDirectory / 'c/src'.
-	srcDirectory ensureCreateDirectory.
-]
-
-{ #category : #writing }
-CExecutor >> writeInputFile [
-	(srcDirectory / 'input.c') writeStreamDo: [ :stream | stream nextPutAll: code ]
+	self remoteExecute: (self remoteSmalltalk at: #OSProcess).
 ]

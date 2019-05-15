@@ -24,3 +24,9 @@ PharoExecutor >> filterCode [
 	temp3:= temp2 copyReplaceAll: '"' with: ''.
 	^temp3.
 ]
+
+{ #category : #initialization }
+PharoExecutor >> initialize [
+	super initialize.
+	self remoteExecute: (self remoteSmalltalk at: #AbstractCompiler).
+]

@@ -13,7 +13,6 @@ Class {
 SeamlessBasedExecutor >> initialize [
 	self network: SeamlessNetwork new.
 	self remoteSmalltalk: (self network environmentAt: (TCPAddress localAt: 40422)).
-	self remoteExecute: (self remoteSmalltalk at: #AbstractCompiler).
 ]
 
 { #category : #accessing }
