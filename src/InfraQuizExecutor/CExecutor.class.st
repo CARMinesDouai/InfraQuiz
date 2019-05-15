@@ -1,20 +1,15 @@
 Class {
 	#name : #CExecutor,
-	#superclass : #SeamlessBasedExecutor,
+	#superclass : #FileBasedExecutor,
 	#category : #InfraQuizExecutor
 }
 
 { #category : #execution }
 CExecutor >> evalCode [
 	|input|
-	input:='input.c' asFileReference.
+	input:='c/src/input.c' asFileReference.
 	input writeStreamDo: [ :stream | stream nextPutAll: self code ].
-	self remoteExecute waitForCommand: 'gcc -o cbin/input input.c'.
-	self remoteExecute waitForCommand: 'cbin/input'.
-]
-
-{ #category : #initialization }
-CExecutor >> initialize [
-	super initialize.
-	self remoteExecute: (self remoteSmalltalk at: #OSProcess).
+	OSProcess waitForCommand: 'gcc -o c/bin/input c/src/input.c'.
+	OSProcess waitForCommand: 'c/bin/input > ',self outputFile.
+	self saveOutput.
 ]

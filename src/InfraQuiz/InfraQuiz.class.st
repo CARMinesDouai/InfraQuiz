@@ -66,7 +66,13 @@ InfraQuiz >> initialize [
 	children last
 		executorType: CExecutor;
 		codeType: 'C programming';
-		oldCode: '#include <stdio.h>';
+		oldCode: '#include <stdio.h>
+		int main()
+{
+   // printf() displays the string inside quotation
+   printf("Hello, World!");
+   return 0;
+}';
 		yourself.
 	selectedChild := children first
 ]
