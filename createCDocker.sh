@@ -1,5 +1,5 @@
 #!/bin/bash
 
-docker build -t dockerc dockerc
+docker build --no-cache -t dockerc dockerc
 mkdir c
 mkdir c/src c/bin

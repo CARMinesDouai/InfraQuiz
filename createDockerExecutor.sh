@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t dockerexecutor dockerexecutor
+docker build --no-cache -t dockerexecutor dockerexecutor
