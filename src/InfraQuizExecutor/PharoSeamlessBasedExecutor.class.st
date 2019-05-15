@@ -2,19 +2,19 @@
 Executor for Pharo codes
 "
 Class {
-	#name : #PharoExecutor,
+	#name : #PharoSeamlessBasedExecutor,
 	#superclass : #SeamlessBasedExecutor,
 	#category : #InfraQuizExecutor
 }
 
 { #category : #execution }
-PharoExecutor >> evalCode [
+PharoSeamlessBasedExecutor >> evalCode [
 	"Evaluate our code and store the result"
 	self result: (self remoteExecute evaluate: self code).
 ]
 
 { #category : #initialization }
-PharoExecutor >> initialize [
+PharoSeamlessBasedExecutor >> initialize [
 	super initialize.
 	self remoteExecute: (self remoteSmalltalk at: #AbstractCompiler).
 ]

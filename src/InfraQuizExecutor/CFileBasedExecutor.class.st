@@ -1,11 +1,11 @@
 Class {
-	#name : #CExecutor,
+	#name : #CFileBasedExecutor,
 	#superclass : #FileBasedExecutor,
 	#category : #InfraQuizExecutor
 }
 
 { #category : #execution }
-CExecutor >> evalCode [
+CFileBasedExecutor >> evalCode [
 	|input|
 	input:='c/src/input.c' asFileReference.
 	input writeStreamDo: [ :stream | stream nextPutAll: self code ].

@@ -60,11 +60,11 @@ InfraQuiz >> initialize [
 	super initialize.
 	children := (1 to: 2) collect: [ :each | TBCodeComponent new ].	"TBScreenComponent new."
 	children first
-		executorType: PharoExecutor;
+		executorType: PharoSeamlessBasedExecutor;
 		codeType: 'Pharo programming';
 		yourself.
 	children last
-		executorType: CExecutor;
+		executorType: CFileBasedExecutor;
 		codeType: 'C programming';
 		oldCode: '#include <stdio.h>
 		int main()
