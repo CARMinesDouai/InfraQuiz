@@ -26,7 +26,8 @@ BaselineOfInfraQuiz >> baseline: spec [
 			spec
 				baseline: 'Seamless'
     			with: [ spec 
-					repository: 'github://dionisiydk/Seamless:v0.9.x' ].
+					repository: 'github://dionisiydk/Seamless:v0.9.x';
+					loads: #(default)].
 			spec
 				package: 'InfraQuiz'
 				with: [ spec requires: #('Bootstrap' 'OSProcess') ].
