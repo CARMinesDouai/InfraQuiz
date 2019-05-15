@@ -24,6 +24,10 @@ BaselineOfInfraQuiz >> baseline: spec [
 						loads: #('Core');
 						repository: 'http://www.squeaksource.com/MetacelloRepository' ].
 			spec
+				baseline: 'Seamless'
+    			with: [ spec 
+					repository: 'github://dionisiydk/Seamless:v0.9.x' ].
+			spec
 				package: 'InfraQuiz'
 				with: [ spec requires: #('Bootstrap' 'OSProcess') ].
 			spec
