@@ -112,8 +112,10 @@ html tbsNavbar beDefault;
 		with: [ html
 				tbsContainer: [ html
 						tbsNavbarHeader: [ 
-							html image tbsPullLeft; style: 'padding: 10px;';url: srcDirectory /
-							'InfraQuizIntro.png'.  
+							html image tbsPullLeft; style: 'padding: 10px;';url: './src/images/InfraQuizIntro.png'.
+							
+							"srcDirectory /
+							'InfraQuizIntro.png'. " 
 							html tbsNavbarBrand
 								url: self application url;
 								with: self class description ] ].
@@ -131,7 +133,7 @@ InfraQuiz >> renderIntroOn: html [
 	html tbsContainer: [ 
 	html tbsJumbotron: [ 		
 		html heading: 'Bienvenue à InfraQuiz'.
-		html image url: srcDirectory /'InfraQuiz.png'.
+		html image url: './src/images/InfraQuiz.png ' "srcDirectory /'InfraQuiz.png'".
 		html break; break.
 		html paragraph: [
 			html text: 'une site crée par des étudiants de '.
