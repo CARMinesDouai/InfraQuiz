@@ -30,9 +30,9 @@ BaselineOfInfraQuiz >> baseline: spec [
 					loads: #(default)].
 			spec
 				package: 'InfraQuiz'
-				with: [ spec requires: #('Bootstrap' 'OSProcess' 'Seamless') ].
+				with: [ spec requires: #('Bootstrap') ].
 			spec
 				package: 'InfraQuizExecutor'
-				with: [ spec requires: #('InfraQuiz') ].
-			spec group: 'default' with: #('InfraQuiz') ]
+				with: [ spec requires: #('Seamless' 'OSProcess') ].
+			spec group: 'default' with: #('InfraQuiz' 'InfraQuizExecutor') ]
 ]
