@@ -134,14 +134,14 @@ InfraQuiz >> renderHeaderBarOn: html [
 InfraQuiz >> renderIntroOn: html [
 	html tbsContainer: [ 
 	html tbsJumbotron: [ 		
-		html heading: 'Bienvenue à InfraQuiz'.
+		html heading: 'Bienvenue sur'.
 		html image url: LibraryInfraQuiz / #InfraQuizIntroPng. "srcDirectory /'InfraQuiz.png'".
 		html break; break.
 		html paragraph: [
-			html text: 'une site crée par des étudiants de '.
+			html text: 'Un site créé par des étudiants de '.
 			html anchor url: 'http://imt-lille-douai.fr'; with: 'l''IMT Lille-Douai '.
 			html text: 'Alejandra ACEVEDO et Maxence GODEFERT'.
-			html text: ' Dans le cadre du projet de découvert de la recherche de la majeur ISIC'].
+			html text: ' dans le cadre du projet de découverte de la recherche de la majeure ISIC'].
 		html paragraph: [
 			html form: [  
 			html tbsButton 
