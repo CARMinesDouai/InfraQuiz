@@ -80,7 +80,7 @@ InfraQuiz >> initialize [
    // printf() displays the string inside quotation
    printf("Hello, World!");
    return 0;
-}';
+}'; expectedResult: 'Hello, World!'
 		yourself.
 	selectedChild := children first
 ]

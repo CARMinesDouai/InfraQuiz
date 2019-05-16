@@ -106,7 +106,7 @@ html tbsForm: [
 			html label for: 'expectedResult'; with: 'What we expect you to write:'.
 			html textArea 
 				style: 'width: 60%; height: 200px';
-				callback: [ : exceptedResult | self expectedResult: expectedResult ];
+				callback: [ : expected | self expectedResult: expected ];
 				tbsFormControl; 
 				id: 'expectedResult'; 
 				text:self expectedResult.
