@@ -20,7 +20,7 @@ Usage :
 	- Use the class method executeMyCode:'your code' which returns the output.
 
 Exemple:
-	PharoExecutor executeMyCode:'1+1' will return 2.
+	PharoExecutorSeamlessBasedExecutor executeMyCode:'1+1' will return 2.
 "
 Class {
 	#name : #CodeExecutor,
