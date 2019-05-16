@@ -74,8 +74,12 @@ self result:nil.
 
 { #category : #testing }
 TBCodeComponent >> isCorrect [
-    ^( (PharoSeamlessBasedExecutor executeMyCode: self expectedResult) = self result).
-	"^( self expectedResult = self result)."
+	|OKorNot|
+	self expectedResult isAllDigits ifTrue: [ OKorNot := ((self expectedResult asNumber) = self result)]
+	ifFalse: [ OKorNot := (self expectedResult = self result) ].
+	^OKorNot.
+    "^( (PharoSeamlessBasedExecutor executeMyCode: self expectedResult) = self result).
+	^( self expectedResult = self result)."
 ]
 
 { #category : #accessing }
