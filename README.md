@@ -49,6 +49,9 @@ The code is in: [src/InfraQuiz](src/InfraQuiz) and [src/InfraQuizExecutor](src/I
 ```bash
 ./run.sh
 ```
+##Files resources
+Add file resources like images or css classes into /files directory
+http://book.seaside.st/book/in-action/serving-files/filelibraries/creating
 
 ## Similar solutions 
 ### Jupyter Notebook
