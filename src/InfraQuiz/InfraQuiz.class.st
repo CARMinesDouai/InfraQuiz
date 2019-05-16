@@ -104,6 +104,11 @@ InfraQuiz >> renderContentOn: html [
 ]
 
 { #category : #rendering }
+InfraQuiz >> renderExpectedResult:html [
+
+]
+
+{ #category : #rendering }
 InfraQuiz >> renderHeaderBarOn: html [
 	html tbsNavbar
 		beDefault;

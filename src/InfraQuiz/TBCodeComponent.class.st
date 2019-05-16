@@ -15,7 +15,8 @@ Class {
 		'result',
 		'oldCode',
 		'codeType',
-		'executorType'
+		'executorType',
+		'expectedResult'
 	],
 	#category : #InfraQuiz
 }
@@ -47,6 +48,18 @@ TBCodeComponent >> executorType: anObject [
 	executorType := anObject
 ]
 
+{ #category : #accessing }
+TBCodeComponent >> expectedResult [
+expectedResult ifNil:[self expectedResult: 3628800].
+
+	^ expectedResult 
+]
+
+{ #category : #accessing }
+TBCodeComponent >> expectedResult: anObject [
+	expectedResult := anObject
+]
+
 { #category : #testing }
 TBCodeComponent >> hasResult [
 	^ self result notNil
@@ -54,8 +67,14 @@ TBCodeComponent >> hasResult [
 
 { #category : #initialization }
 TBCodeComponent >> initialize [ 
-super initialize
-result:nil.
+super initialize.
+self result:nil.
+
+]
+
+{ #category : #testing }
+TBCodeComponent >> isCorrect [
+    ^( self expectedResult = self result).
 ]
 
 { #category : #accessing }
@@ -79,8 +98,18 @@ html tbsForm: [
 				style: 'width: 60%; height: 200px';
 				callback: [ : code | self executeCode: code with: self executorType  ];
 				tbsFormControl; 
-				id: 'exampleInputEmail1'; 
+				id: 'inputCode'; 
 				text: self  oldCode.
+		].	
+		
+		html tbsFormGroup: [ 
+			html label for: 'expectedResult'; with: 'What we expect you to write:'.
+			html textArea 
+				style: 'width: 60%; height: 200px';
+				callback: [ : exceptedResult | self expectedResult: expectedResult ];
+				tbsFormControl; 
+				id: 'expectedResult'; 
+				text:self expectedResult.
 		].	
 		
 		html tbsSubmitButton 
@@ -102,9 +131,27 @@ html tbsForm: [
 		html heading level:4; with: 'Output:'.
 		html textArea 
 			style: 'width: 60%; height: 200px';
-			text: self result
+			text: self result .
+		
+			html div
+		class: 'spacer';
+		style: 'height: 50px'.
+		
+		self isCorrect ifTrue:[
+			html tbsImage 
+			beRounded;
+			url: LibraryInfraQuiz / #correctJpg.
+			 ]
+		ifFalse:[
+			html tbsImage 
+			beRounded;
+			url: LibraryInfraQuiz / #incorrect1Jpeg.
 			].
-].
+			 
+			
+			 ].
+		
+		]
 ]
 
 { #category : #initialization }
