@@ -20,7 +20,6 @@ Class {
 		'children',
 		'selectedChild',
 		'logoImage',
-		'srcDirectory',
 		'displayIntro'
 	],
 	#category : #InfraQuiz
@@ -67,8 +66,6 @@ displayIntro := false.
 InfraQuiz >> initialize [
 	super initialize.
 	displayIntro := true.
-	srcDirectory := Smalltalk imageDirectory / 'src/images'.
-	srcDirectory ensureCreateDirectory.
 	children := (1 to: 2) collect: [ :each | TBCodeComponent new ].	"TBScreenComponent new."
 	children first
 		executorType: PharoSeamlessBasedExecutor;
@@ -108,24 +105,25 @@ InfraQuiz >> renderContentOn: html [
 
 { #category : #rendering }
 InfraQuiz >> renderHeaderBarOn: html [
-html tbsNavbar beDefault;
+	html tbsNavbar
+		beDefault;
 		with: [ html
 				tbsContainer: [ html
-						tbsNavbarHeader: [ 
-							html image tbsPullLeft; style: 'padding: 10px;';url: './src/images/InfraQuizIntro.png'.
-							
+						tbsNavbarHeader: [ html image
+								tbsPullLeft;
+								style: 'padding: 10px;';
+								url: LibraryInfraQuiz / #InfraQuizPng.
+
 							"srcDirectory /
-							'InfraQuizIntro.png'. " 
+							'InfraQuizIntro.png'. "
 							html tbsNavbarBrand
 								url: self application url;
 								with: self class description ] ].
-						html form: [ 	
-		html tbsNavbarButton 
-				tbsPullRight;
-				callback: [ self returnToIntro ]; 
-				with: 'Home'  ]]  
-		
-	
+			html
+				form: [ html tbsNavbarButton
+						tbsPullRight;
+						callback: [ self returnToIntro ];
+						with: 'Home' ] ]
 ]
 
 { #category : #rendering }
@@ -133,7 +131,7 @@ InfraQuiz >> renderIntroOn: html [
 	html tbsContainer: [ 
 	html tbsJumbotron: [ 		
 		html heading: 'Bienvenue à InfraQuiz'.
-		html image url: './src/images/InfraQuiz.png ' "srcDirectory /'InfraQuiz.png'".
+		html image url: LibraryInfraQuiz / #InfraQuizIntroPng. "srcDirectory /'InfraQuiz.png'".
 		html break; break.
 		html paragraph: [
 			html text: 'une site crée par des étudiants de '.
