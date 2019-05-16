@@ -75,7 +75,7 @@ InfraQuiz >> initialize [
 		executorType: CFileBasedExecutor;
 		codeType: 'C programming';
 		oldCode: '#include <stdio.h>
-		int main()
+		int main(void)
 {
    // printf() displays the string inside quotation
    printf("Hello, World!");
