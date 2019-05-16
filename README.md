@@ -84,6 +84,11 @@ Playgrounds can run codes of different programming languages as the platform use
 - Docker
 - Utile pour dev : https://fuhrmanator.github.io/2019/02/27/Pharo-in-WSL.html
 - C in docker : https://nextbreakpoint.com/posts/article-compile-code-with-docker.html
+### - Seamless :
+ Transparent network of objects
+ Seamless is a reflective communication middleware for Pharo which organizes transparent communication between distributed objects. This helps us execute code between pharo images easily without using intermediary text files and without the need to make a complicated network set-up.
+ https://hal.inria.fr/hal-01145792/document
+
 
 # Votre projet
 
