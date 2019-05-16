@@ -33,7 +33,7 @@ InfraQuiz class >> canBeRoot [
 { #category : #acccessing }
 InfraQuiz class >> description [
 |aDescription|
-aDescription := 'Un site de quiz pour apprendre à programmer developpé par des étudiants de L''IMT Lille-Douai'.
+aDescription := 'Un site de quiz pour apprendre à programmer'.
 	^aDescription.
 ]
 
@@ -111,19 +111,18 @@ InfraQuiz >> renderHeaderBarOn: html [
 				tbsContainer: [ html
 						tbsNavbarHeader: [ html image
 								tbsPullLeft;
-								style: 'padding: 10px;';
+								style: 'padding: 10px; max-width: 20%; max-height: 20%';
 								url: LibraryInfraQuiz / #InfraQuizPng.
-
 							"srcDirectory /
 							'InfraQuizIntro.png'. "
 							html tbsNavbarBrand
 								url: self application url;
-								with: self class description ] ].
+								with: self class description ].
 			html
 				form: [ html tbsNavbarButton
 						tbsPullRight;
 						callback: [ self returnToIntro ];
-						with: 'Home' ] ]
+						with: 'Home' ] ] ]
 ]
 
 { #category : #rendering }
