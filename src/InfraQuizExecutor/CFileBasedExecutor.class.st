@@ -18,6 +18,7 @@ CFileBasedExecutor >> evalCode [
 { #category : #writing }
 CFileBasedExecutor >> writeInputFile [
 	|input|
+	File deleteFile:'c/src/input.c'. 
 	input:='c/src/input.c' asFileReference.
 	input writeStreamDo: [ :stream | stream nextPutAll: self code ].
 ]
