@@ -91,6 +91,7 @@ TBCodeComponent >> oldCode: anObject [
 { #category : #rendering }
 TBCodeComponent >> renderContentOn: html [
 html tbsContainer with:[
+	html tbsColumn:[
 html tbsForm: [
 		html tbsFormGroup: [ 
 			html label for: 'inputCode'; with: 'Your Code:'.
@@ -100,17 +101,7 @@ html tbsForm: [
 				tbsFormControl; 
 				id: 'inputCode'; 
 				text: self  oldCode.
-		].	
-		
-		html tbsFormGroup: [ 
-			html label for: 'expectedResult'; with: 'What we expect you to write:'.
-			html textArea 
-				style: 'width: 60%; height: 200px';
-				callback: [ : expected | self expectedResult: expected ];
-				tbsFormControl; 
-				id: 'expectedResult'; 
-				text:self expectedResult.
-		].	
+		].
 		
 		html tbsSubmitButton 
 			bePrimary;
@@ -121,7 +112,7 @@ html tbsForm: [
 			callback: [ self  resetResult ];
 			with: 'Reset'.
 			
-	].
+	]. 
 
 	html div
 		class: 'spacer';
@@ -149,9 +140,22 @@ html tbsForm: [
 			].
 			 
 			
-			 ].
+			 ]. ] mediumSize: 6.
 		
 		]
+]
+
+{ #category : #rendering }
+TBCodeComponent >> renderResultOn: html [
+		html tbsFormGroup: [ 
+			html label for: 'expectedResult'; with: 'What we expect you to write:'.
+			html textArea 
+				style: 'width: 60%; height: 100px';
+				callback: [ : expected | self expectedResult: expected ];
+				tbsFormControl; 
+				id: 'expectedResult'; 
+				text:self expectedResult.
+		].	
 ]
 
 { #category : #initialization }
