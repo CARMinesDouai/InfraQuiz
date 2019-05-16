@@ -74,7 +74,8 @@ self result:nil.
 
 { #category : #testing }
 TBCodeComponent >> isCorrect [
-    ^( self expectedResult = self result).
+    ^( (PharoSeamlessBasedExecutor executeMyCode: self expectedResult) = self result).
+	"^( self expectedResult = self result)."
 ]
 
 { #category : #accessing }
