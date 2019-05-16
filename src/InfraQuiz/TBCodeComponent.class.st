@@ -50,7 +50,7 @@ TBCodeComponent >> executorType: anObject [
 
 { #category : #accessing }
 TBCodeComponent >> expectedResult [
-expectedResult ifNil:[self expectedResult: 3628800].
+expectedResult ifNil:[self expectedResult: '3628800'].
 
 	^ expectedResult 
 ]
@@ -95,72 +95,66 @@ TBCodeComponent >> oldCode: anObject [
 
 { #category : #rendering }
 TBCodeComponent >> renderContentOn: html [
-html tbsContainer with:[
-	html tbsColumn:[
-html tbsForm: [
-		html tbsFormGroup: [ 
-			html label for: 'inputCode'; with: 'Your Code:'.
-			html textArea 
-				style: 'width: 60%; height: 200px';
-				callback: [ : code | self executeCode: code with: self executorType  ];
-				tbsFormControl; 
-				id: 'inputCode'; 
-				text: self  oldCode.
-		].
-		
-		html tbsSubmitButton 
-			bePrimary;
-			with: 'Execute'.
-		html space.
-		html tbsButton
-			beDefault;
-			callback: [ self  resetResult ];
-			with: 'Reset'.
-			
-	]. 
-
-	html div
-		class: 'spacer';
-		style: 'height: 50px'.
-	
-	self  hasResult ifTrue: [ 
-		html heading level:4; with: 'Output:'.
-		html textArea 
-			style: 'width: 60%; height: 200px';
-			text: self result .
-		
-			html div
-		class: 'spacer';
-		style: 'height: 50px'.
-		
-		self isCorrect ifTrue:[
-			html tbsImage 
-			beRounded;
-			url: LibraryInfraQuiz / #correctJpg.
-			 ]
-		ifFalse:[
-			html tbsImage 
-			beRounded;
-			url: LibraryInfraQuiz / #incorrect1Jpeg.
-			].
-			 
-			
-			 ]. ] mediumSize: 6.
-		
-		]
-]
-
-{ #category : #rendering }
-TBCodeComponent >> renderResultOn: html [
-		html tbsFormGroup: [ 
-			html label for: 'expectedResult'; with: 'What we expect you to write:'.
-			html textArea 
-				style: 'width: 60%; height: 100px';
-				callback: [ : expected | self expectedResult: expected ];
-				tbsFormControl; 
-				id: 'expectedResult'; 
-				text:self expectedResult.
-		].	
+	html tbsContainer
+		with: [ html
+				tbsColumn: [ html
+						tbsForm: [ html
+								tbsFormGroup: [ html label
+										for: 'inputCode';
+										with: 'Your Code:'.
+									html textArea
+										style: 'width: 60%; height: 200px';
+										callback: [ :code | self executeCode: code with: self executorType ];
+										tbsFormControl;
+										id: 'inputCode';
+										text: self oldCode ].
+									
+				
+						"html tbsFormGroup: [ html label
+								for: 'expectedResult';
+								with: 'What we expect you to write:'.
+							html textArea
+								style: 'width: 60%; height: 100px';
+								callback: [ :expected | self expectedResult: expected ];
+								tbsFormControl;
+								id: 'expectedResult';
+								text: self expectedResult ].  "
+							
+							html tbsSubmitButton
+								bePrimary;
+								with: 'Execute'.
+							html space.
+							html tbsButton
+								beDefault;
+								callback: [ self resetResult ];
+								with: 'Reset' ].
+					html div
+						class: 'spacer';
+						style: 'height: 50px'.
+					self hasResult
+						ifTrue: [ html heading
+								level: 4;
+								with: 'Output:'.
+							html textArea
+								style: 'width: 60%; height: 200px';
+								text: self result.
+							html div
+								class: 'spacer';
+								style: 'height: 50px'.
+							self isCorrect
+								ifTrue: [ html tbsImage
+										beRounded;
+										url: LibraryInfraQuiz / #correctJpg ]
+								ifFalse: [ html tbsImage
+										beRounded;
+										url: LibraryInfraQuiz / #incorrect1Jpeg ] ] ]
+				mediumSize: 8.
+			html
+				tbsColumn: [ html tbsButton
+						beDefault;
+						callback: [ self setExpectedResult ];
+						with: 'Write the expected result' ]
+				mediumSize: 4 ]
 ]
 
 { #category : #initialization }
@@ -178,4 +172,18 @@ TBCodeComponent >> result [
 { #category : #accessing }
 TBCodeComponent >> result: anObject [
 	result := anObject
+]
+
+{ #category : #rendering }
+TBCodeComponent >> setExpectedResult [ 
+|webDialog newExpectedResult|
+		webDialog:= WAInputDialog new
+		addMessage: 'Enter the expected result for this exercice';
+		default: '';
+		label:'OK';
+		yourself. 
+		newExpectedResult:= self call: webDialog.
+		self expectedResult:newExpectedResult.
+
+		
 ]
