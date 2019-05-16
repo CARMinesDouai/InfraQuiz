@@ -1,3 +1,6 @@
+"
+Use command line handler of Pharo to execute Code.
+"
 Class {
 	#name : #PharoFileBasedExecutor,
 	#superclass : #FileBasedExecutor,

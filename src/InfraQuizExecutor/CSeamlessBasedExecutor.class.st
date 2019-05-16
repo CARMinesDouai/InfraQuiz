@@ -1,3 +1,8 @@
+"
+Compile C Code with GCC inside the Docker container and execute this inside the same container.
+
+NOT WORKING
+"
 Class {
 	#name : #CSeamlessBasedExecutor,
 	#superclass : #SeamlessBasedExecutor,
@@ -6,6 +11,7 @@ Class {
 
 { #category : #execution }
 CSeamlessBasedExecutor >> evalCode [
+	"Evaluate our code and store the result"
 	|input|
 	self remoteExecute: (self remoteSmalltalk at: #AbstractCompiler).
 	input:='input.c'.

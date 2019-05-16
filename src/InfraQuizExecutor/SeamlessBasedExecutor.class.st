@@ -1,3 +1,12 @@
+"
+The executor of this class use a second Pharo image which is in a Docker Container.
+Seamless is used to communicate with the second image.
+
+Instance variables :
+	network: <Seamlessnetwork>
+	remoteSmalltalk: <Seamlessproxy>
+	remoteExecute: <Class>
+"
 Class {
 	#name : #SeamlessBasedExecutor,
 	#superclass : #CodeExecutor,
