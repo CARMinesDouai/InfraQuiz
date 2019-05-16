@@ -96,8 +96,8 @@ TBCodeComponent >> oldCode: anObject [
 { #category : #rendering }
 TBCodeComponent >> renderContentOn: html [
 	html tbsContainer
-		with: [ html
-				tbsColumn: [ html
+		with: [ 
+			html tbsColumn:[html 
 						tbsForm: [ html
 								tbsFormGroup: [ html label
 										for: 'inputCode';
@@ -147,14 +147,14 @@ TBCodeComponent >> renderContentOn: html [
 										url: LibraryInfraQuiz / #correctJpg ]
 								ifFalse: [ html tbsImage
 										beRounded;
-										url: LibraryInfraQuiz / #incorrect1Jpeg ] ] ]
-				mediumSize: 8.
-			html
-				tbsColumn: [ html tbsButton
-						beDefault;
-						callback: [ self setExpectedResult ];
-						with: 'Write the expected result' ]
-				mediumSize: 4 ]
+										url: LibraryInfraQuiz / #incorrect1Jpeg ] ] .]mediumSize: 8.
+							html tbsColumn: [  
+									html anchor
+						callback: [ self setExpectedResult];
+						with: 'Write the expected result' 
+						] mediumSize:4.
+					
+				]
 ]
 
 { #category : #initialization }
@@ -178,8 +178,8 @@ TBCodeComponent >> result: anObject [
 TBCodeComponent >> setExpectedResult [ 
 |webDialog newExpectedResult|
 		webDialog:= WAInputDialog new
-		addMessage: 'Enter the expected result for this exercice';
-		default: '';
+		addMessage: 'Enter the expected result for this exercice :';
+		default: '0';
 		label:'OK';
 		yourself. 
 		newExpectedResult:= self call: webDialog.
