@@ -1,6 +1,8 @@
 *.image
 *.changes
 *.sources
+crash.dmp
+PharoDebug.log
 pharo
 pharo-ui
 pharo-vm
